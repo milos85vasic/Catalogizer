@@ -1,10 +1,10 @@
 package com.catalogizer.utils
 
+import com.catalogizer.utils.*
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import kotlin.test.Test
 import kotlin.test.assertEquals
-import kotlinx.serialization.json.Json
-import kotlinx.serialization.encodeToString
-import com.catalogizer.utils.*
 
 internal class PrinterTest {
 
