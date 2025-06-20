@@ -12,5 +12,5 @@ dependencies {
 
 application {
 
-    mainClass = "com.catalogizer.app.ApplicationKt"
+    mainClass = "com.catalogizer.application.ApplicationKt"
 }
