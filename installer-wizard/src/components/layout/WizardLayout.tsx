@@ -1,0 +1,134 @@
+import { Outlet, useLocation, useNavigate } from 'react-router-dom'
+import { Button } from '../ui/Button'
+import { Card, CardContent, CardHeader, CardTitle } from '../ui/Card'
+import { useWizard } from '../../contexts/WizardContext'
+import { ChevronLeft, ChevronRight, Settings, FileText } from 'lucide-react'
+
+const steps = [
+  { path: '/', title: 'Welcome', description: 'Introduction to the setup wizard' },
+  { path: '/scan', title: 'Network Scan', description: 'Discover SMB hosts on your network' },
+  { path: '/configure', title: 'SMB Configuration', description: 'Configure SMB connections' },
+  { path: '/manage', title: 'Configuration Management', description: 'Manage your configuration' },
+  { path: '/summary', title: 'Summary', description: 'Review and finalize setup' },
+]
+
+export default function WizardLayout() {
+  const { state, nextStep, previousStep } = useWizard()
+  const location = useLocation()
+  const navigate = useNavigate()
+
+  const currentStepIndex = steps.findIndex(step => step.path === location.pathname)
+  const currentStep = steps[currentStepIndex] || steps[0]
+
+  const handleNext = () => {
+    if (currentStepIndex < steps.length - 1) {
+      navigate(steps[currentStepIndex + 1].path)
+      nextStep()
+    }
+  }
+
+  const handlePrevious = () => {
+    if (currentStepIndex > 0) {
+      navigate(steps[currentStepIndex - 1].path)
+      previousStep()
+    }
+  }
+
+  const canNext = state.canGoNext && currentStepIndex < steps.length - 1
+  const canPrevious = state.canGoPrevious && currentStepIndex > 0
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-6">
+      <div className="mx-auto max-w-6xl">
+        {/* Header */}
+        <div className="mb-8 text-center">
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <Settings className="h-8 w-8 text-blue-600" />
+            <h1 className="text-3xl font-bold text-gray-900">Catalogizer Installation Wizard</h1>
+          </div>
+          <p className="text-lg text-gray-600">
+            Configure SMB network sources for your media collection
+          </p>
+        </div>
+
+        {/* Progress Bar */}
+        <div className="mb-8">
+          <div className="flex items-center justify-between mb-4">
+            {steps.map((step, index) => (
+              <div
+                key={step.path}
+                className={`flex items-center ${index < steps.length - 1 ? 'flex-1' : ''}`}
+              >
+                <div className="flex flex-col items-center">
+                  <div
+                    className={`w-10 h-10 rounded-full flex items-center justify-center border-2 transition-colors ${
+                      index === currentStepIndex
+                        ? 'bg-blue-600 border-blue-600 text-white'
+                        : index < currentStepIndex
+                        ? 'bg-green-600 border-green-600 text-white'
+                        : 'bg-white border-gray-300 text-gray-500'
+                    }`}
+                  >
+                    <span className="text-sm font-medium">{index + 1}</span>
+                  </div>
+                  <div className="mt-2 text-center">
+                    <div className={`text-sm font-medium ${
+                      index === currentStepIndex ? 'text-blue-600' : 'text-gray-500'
+                    }`}>
+                      {step.title}
+                    </div>
+                  </div>
+                </div>
+                {index < steps.length - 1 && (
+                  <div className={`flex-1 h-1 mx-4 rounded ${
+                    index < currentStepIndex ? 'bg-green-600' : 'bg-gray-200'
+                  }`} />
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Main Content */}
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <FileText className="h-6 w-6" />
+              {currentStep.title}
+            </CardTitle>
+            <p className="text-muted-foreground">{currentStep.description}</p>
+          </CardHeader>
+          <CardContent>
+            <Outlet />
+          </CardContent>
+        </Card>
+
+        {/* Navigation */}
+        <div className="flex justify-between items-center">
+          <Button
+            variant="outline"
+            onClick={handlePrevious}
+            disabled={!canPrevious}
+            className="flex items-center gap-2"
+          >
+            <ChevronLeft className="h-4 w-4" />
+            Previous
+          </Button>
+
+          <div className="text-sm text-gray-500">
+            Step {currentStepIndex + 1} of {steps.length}
+          </div>
+
+          <Button
+            onClick={handleNext}
+            disabled={!canNext}
+            className="flex items-center gap-2"
+          >
+            {currentStepIndex === steps.length - 1 ? 'Finish' : 'Next'}
+            <ChevronRight className="h-4 w-4" />
+          </Button>
+        </div>
+      </div>
+    </div>
+  )
+}
