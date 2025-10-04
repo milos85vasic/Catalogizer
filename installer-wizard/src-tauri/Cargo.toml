@@ -1,0 +1,32 @@
+[package]
+name = "catalogizer-installer-wizard"
+version = "1.0.0"
+description = "Installation wizard for Catalogizer SMB source configuration"
+authors = ["Catalogizer Team"]
+license = "MIT"
+repository = "https://github.com/catalogizer/catalogizer"
+default-run = "catalogizer-installer-wizard"
+edition = "2021"
+rust-version = "1.70"
+
+[build-dependencies]
+tauri-build = { version = "2.0", features = [] }
+
+[dependencies]
+serde_json = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+tauri = { version = "2.0", features = ["shell-open", "dialog-open", "dialog-save", "fs-read-file", "fs-write-file", "fs-exists"] }
+tauri-plugin-shell = "2.0"
+tauri-plugin-dialog = "2.0"
+tauri-plugin-fs = "2.0"
+tokio = { version = "1.0", features = ["full"] }
+anyhow = "1.0"
+thiserror = "1.0"
+netbios = "0.1"
+trust-dns-resolver = "0.23"
+ipnetwork = "0.20"
+network-interface = "1.0"
+
+[features]
+default = ["custom-protocol"]
+custom-protocol = ["tauri/custom-protocol"]
