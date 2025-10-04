@@ -1,25 +1,12 @@
-package com.catalogizer.utils
+package com.catalogizer.core
 
-import com.catalogizer.utils.*
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-internal class PrinterTest {
+internal class EnvironmentVariablesTest {
 
     @Test
-    fun testMessage() {
-        val message = "message"
-        val testPrinter = Printer(message)
-        assertEquals(testPrinter.message, message)
-    }
-
-    @Test
-    fun testSerialization() {
-        val message = "message"
-        val json1 = Json.encodeToString(Printer(message))
-        val json2 = Json.encodeToString(Printer(message))
-        assertEquals(json1, json2)
+    fun testEnvironmentVariableValues() {
+        assertEquals("CATALOGIZER_CONFIGURATION_HOME", EnvironmentVariables.CATALOGIZER_CONFIGURATION_HOME.variable)
     }
 }
