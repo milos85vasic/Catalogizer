@@ -15,5 +15,7 @@ plugins {
 
 include(":Application")
 include(":Core")
+include(":Samba")
+include(":Catalogizer")
 
 rootProject.name = "Catalogizer"

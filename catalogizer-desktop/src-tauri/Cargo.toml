@@ -1,0 +1,30 @@
+[package]
+name = "catalogizer-desktop"
+version = "1.0.0"
+description = "Catalogizer Desktop Client"
+authors = ["Catalogizer Team"]
+license = "MIT"
+repository = "https://github.com/catalogizer/catalogizer"
+default-run = "catalogizer-desktop"
+edition = "2021"
+rust-version = "1.60"
+
+[build-dependencies]
+tauri-build = { version = "2.0", features = [] }
+
+[dependencies]
+serde_json = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+tauri = { version = "2.0", features = [ "shell-open"] }
+tokio = { version = "1", features = ["full"] }
+reqwest = { version = "0.11", features = ["json"] }
+directories = "5.0"
+log = "0.4"
+env_logger = "0.10"
+
+[features]
+# this feature is used for production builds or when `devPath` points to the filesystem and the built-in dev server is disabled.
+# If you use cargo directly instead of tauri's cli you can use this feature flag to switch between tauri's `dev` and `build` modes.
+# DO NOT REMOVE!!
+default = [ "custom-protocol" ]
+custom-protocol = [ "tauri/custom-protocol" ]

@@ -1,0 +1,108 @@
+# Docker Compose Override File
+# This file contains development and customization overrides
+# Copy and modify as needed for your environment
+
+version: '3.8'
+
+services:
+  # Development override for server with hot-reload
+  catalogizer-server:
+    # Uncomment for development mode
+    # build:
+    #   context: ../server
+    #   dockerfile: Dockerfile.dev
+    # volumes:
+    #   - ../server:/app:ro
+    #   - /app/node_modules
+    environment:
+      # Development specific settings
+      NODE_ENV: development
+      DEBUG: "catalogizer:*"
+      HOT_RELOAD: "true"
+    # Expose additional debugging ports
+    ports:
+      - "9229:9229"  # Node.js debugging
+
+  # Development database with custom init scripts
+  database:
+    volumes:
+      - ../sql/dev-data.sql:/docker-entrypoint-initdb.d/99-dev-data.sql:ro
+    environment:
+      # Development settings
+      POSTGRES_DB: catalogizer_dev
+
+  # Custom media volumes for development
+  # Uncomment and modify paths as needed
+  # catalogizer-server:
+  #   volumes:
+  #     # Map your local media directories
+  #     - /path/to/your/movies:/media/movies:ro
+  #     - /path/to/your/tv:/media/tv:ro
+  #     - /path/to/your/music:/media/music:ro
+  #     - /path/to/your/documents:/media/documents:ro
+
+  # Web interface development override
+  web:
+    # Uncomment for development
+    # build:
+    #   context: ../web
+    #   dockerfile: Dockerfile.dev
+    # volumes:
+    #   - ../web/src:/app/src:ro
+    environment:
+      NODE_ENV: development
+
+# Additional services for development
+# Uncomment as needed
+
+# Mail server for testing (MailHog)
+# mailhog:
+#   image: mailhog/mailhog:latest
+#   container_name: catalogizer-mailhog
+#   ports:
+#     - "1025:1025"  # SMTP
+#     - "8025:8025"  # Web UI
+#   networks:
+#     - catalogizer-network
+
+# pgAdmin for database management
+# pgadmin:
+#   image: dpage/pgadmin4:latest
+#   container_name: catalogizer-pgadmin
+#   environment:
+#     PGADMIN_DEFAULT_EMAIL: admin@catalogizer.local
+#     PGADMIN_DEFAULT_PASSWORD: admin
+#   ports:
+#     - "5050:80"
+#   volumes:
+#     - pgadmin_data:/var/lib/pgadmin
+#   networks:
+#     - catalogizer-network
+
+# Redis Commander for Redis management
+# redis-commander:
+#   image: rediscommander/redis-commander:latest
+#   container_name: catalogizer-redis-commander
+#   environment:
+#     REDIS_HOSTS: local:redis:6379
+#   ports:
+#     - "8081:8081"
+#   networks:
+#     - catalogizer-network
+
+# Jaeger for distributed tracing
+# jaeger:
+#   image: jaegertracing/all-in-one:latest
+#   container_name: catalogizer-jaeger
+#   environment:
+#     COLLECTOR_ZIPKIN_HTTP_PORT: 9411
+#   ports:
+#     - "16686:16686"  # Web UI
+#     - "14268:14268"  # HTTP collector
+#   networks:
+#     - catalogizer-network
+
+# Additional volumes for development tools
+# volumes:
+#   pgadmin_data:
+#     name: catalogizer-pgadmin-data
