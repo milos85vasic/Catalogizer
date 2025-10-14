@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.catalogizer.androidtv.app-mergeDebugResources-79:/values-da/values-da.xml",
+            "outputFile": "com.catalogizer.androidtv.app-mergeDebugResources-77:/values-da/values-da.xml",
             "map": [
                 {
                     "source": "/home/milosvasic/.gradle/caches/transforms-3/042f22a22b2e2cbea202bc5e16fcd83e/transformed/media3-exoplayer-1.2.0/res/values-da/values-da.xml",

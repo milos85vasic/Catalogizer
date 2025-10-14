@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.catalogizer.androidtv.app-mergeDebugResources-79:/values-ja/values-ja.xml",
+            "outputFile": "com.catalogizer.androidtv.app-mergeDebugResources-77:/values-ja/values-ja.xml",
             "map": [
                 {
                     "source": "/home/milosvasic/.gradle/caches/transforms-3/e16d348ebde30675d196ebc599527f7f/transformed/ui-release/res/values-ja/values-ja.xml",
