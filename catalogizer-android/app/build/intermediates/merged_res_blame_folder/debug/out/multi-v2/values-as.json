@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.catalogizer.android.app-mergeDebugResources-76:/values-as/values-as.xml",
+            "outputFile": "com.catalogizer.android.app-mergeDebugResources-72:/values-as/values-as.xml",
             "map": [
                 {
                     "source": "/home/milosvasic/.gradle/caches/transforms-3/0bb967c933a93c7b14778af2157fd563/transformed/ui-release/res/values-as/values-as.xml",

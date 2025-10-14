@@ -3,7 +3,9 @@
 /home/milosvasic/Projects/Catalogizer/catalogizer-android/app/src/main/java/com/catalogizer/android/data/sync/SyncWorker.kt
 /home/milosvasic/Projects/Catalogizer/catalogizer-android/app/src/main/java/com/catalogizer/android/data/repository/OfflineRepository.kt
 /home/milosvasic/Projects/Catalogizer/catalogizer-android/app/src/main/java/com/catalogizer/android/data/sync/SyncManager.kt
+/home/milosvasic/Projects/Catalogizer/catalogizer-android/app/src/main/java/com/catalogizer/android/DependencyContainer.kt
 /home/milosvasic/Projects/Catalogizer/catalogizer-android/app/src/main/java/com/catalogizer/android/data/local/SyncOperationDao.kt
+/home/milosvasic/Projects/Catalogizer/catalogizer-android/app/src/main/java/com/catalogizer/android/CatalogizerWorkerFactory.kt
 /home/milosvasic/Projects/Catalogizer/catalogizer-android/app/src/main/java/com/catalogizer/android/CatalogizerApplication.kt
 /home/milosvasic/Projects/Catalogizer/catalogizer-android/app/src/main/java/com/catalogizer/android/data/remote/CatalogizerApi.kt
 /home/milosvasic/Projects/Catalogizer/catalogizer-android/app/src/main/java/com/catalogizer/android/ui/navigation/CatalogizerNavigation.kt

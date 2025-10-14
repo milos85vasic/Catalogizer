@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.catalogizer.android.app-mergeReleaseResources-73:/values-fi/values-fi.xml",
+            "outputFile": "com.catalogizer.android.app-mergeReleaseResources-69:/values-fi/values-fi.xml",
             "map": [
                 {
                     "source": "/home/milosvasic/.gradle/caches/transforms-3/0bb967c933a93c7b14778af2157fd563/transformed/ui-release/res/values-fi/values-fi.xml",
