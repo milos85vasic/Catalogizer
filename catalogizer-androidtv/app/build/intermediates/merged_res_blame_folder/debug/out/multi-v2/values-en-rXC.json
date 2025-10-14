@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.catalogizer.androidtv.app-mergeDebugResources-79:/values-en-rXC/values-en-rXC.xml",
+            "outputFile": "com.catalogizer.androidtv.app-mergeDebugResources-77:/values-en-rXC/values-en-rXC.xml",
             "map": [
                 {
                     "source": "/home/milosvasic/.gradle/caches/transforms-3/3e19d8e769244d758b296cb039ef8fd5/transformed/material3-1.1.2/res/values-en-rXC/values-en-rXC.xml",

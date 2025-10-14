@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.catalogizer.androidtv.app-mergeDebugResources-79:/values-en-rIN/values-en-rIN.xml",
+            "outputFile": "com.catalogizer.androidtv.app-mergeDebugResources-77:/values-en-rIN/values-en-rIN.xml",
             "map": [
                 {
                     "source": "/home/milosvasic/.gradle/caches/transforms-3/e16d348ebde30675d196ebc599527f7f/transformed/ui-release/res/values-en-rIN/values-en-rIN.xml",
