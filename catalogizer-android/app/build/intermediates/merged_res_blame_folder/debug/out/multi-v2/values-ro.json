@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.catalogizer.android.app-mergeDebugResources-75:/values-ro/values-ro.xml",
+            "outputFile": "com.catalogizer.android.app-mergeDebugResources-76:/values-ro/values-ro.xml",
             "map": [
                 {
-                    "source": "/home/milosvasic/.gradle/caches/transforms-3/3e19d8e769244d758b296cb039ef8fd5/transformed/material3-1.1.2/res/values-ro/values-ro.xml",
+                    "source": "/home/milosvasic/.gradle/caches/transforms-3/cd21e05b135c9a3044e9acf9859124f0/transformed/material3-1.1.2/res/values-ro/values-ro.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -21,24 +21,7 @@
                     }
                 },
                 {
-                    "source": "/home/milosvasic/.gradle/caches/transforms-3/042f22a22b2e2cbea202bc5e16fcd83e/transformed/media3-exoplayer-1.2.0/res/values-ro/values-ro.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10",
-                        "startColumns": "4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,136,198,263,335,413,493,583,676",
-                        "endColumns": "80,61,64,71,77,79,89,92,73",
-                        "endOffsets": "131,193,258,330,408,488,578,671,745"
-                    },
-                    "to": {
-                        "startLines": "94,95,96,97,98,99,100,101,102",
-                        "startColumns": "4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "8347,8428,8490,8555,8627,8705,8785,8875,8968",
-                        "endColumns": "80,61,64,71,77,79,89,92,73",
-                        "endOffsets": "8423,8485,8550,8622,8700,8780,8870,8963,9037"
-                    }
-                },
-                {
-                    "source": "/home/milosvasic/.gradle/caches/transforms-3/b808657120282f1e14a29645b274c566/transformed/core-1.12.0/res/values-ro/values-ro.xml",
+                    "source": "/home/milosvasic/.gradle/caches/transforms-3/009c722b605a074b0a2a2a4927ac9763/transformed/core-1.12.0/res/values-ro/values-ro.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -55,7 +38,7 @@
                     }
                 },
                 {
-                    "source": "/home/milosvasic/.gradle/caches/transforms-3/906a61caa1206c52bd0a7b38175f77d3/transformed/ui-release/res/values-ro/values-ro.xml",
+                    "source": "/home/milosvasic/.gradle/caches/transforms-3/0bb967c933a93c7b14778af2157fd563/transformed/ui-release/res/values-ro/values-ro.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -72,7 +55,24 @@
                     }
                 },
                 {
-                    "source": "/home/milosvasic/.gradle/caches/transforms-3/f23e6af03803b2e47645b9d3fd9ef05d/transformed/media3-ui-1.2.0/res/values-ro/values-ro.xml",
+                    "source": "/home/milosvasic/.gradle/caches/transforms-3/867526a176516fed766633d625183be4/transformed/media3-exoplayer-1.2.0/res/values-ro/values-ro.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,136,198,263,335,413,493,583,676",
+                        "endColumns": "80,61,64,71,77,79,89,92,73",
+                        "endOffsets": "131,193,258,330,408,488,578,671,745"
+                    },
+                    "to": {
+                        "startLines": "94,95,96,97,98,99,100,101,102",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "8347,8428,8490,8555,8627,8705,8785,8875,8968",
+                        "endColumns": "80,61,64,71,77,79,89,92,73",
+                        "endOffsets": "8423,8485,8550,8622,8700,8780,8870,8963,9037"
+                    }
+                },
+                {
+                    "source": "/home/milosvasic/.gradle/caches/transforms-3/63291e1501d3dae979a26c57c047f1ad/transformed/media3-ui-1.2.0/res/values-ro/values-ro.xml",
                     "from": {
                         "startLines": "2,11,16,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

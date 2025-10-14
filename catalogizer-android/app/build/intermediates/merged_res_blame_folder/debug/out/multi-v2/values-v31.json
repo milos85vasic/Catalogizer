@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.catalogizer.android.app-mergeDebugResources-75:/values-v31/values-v31.xml",
+            "outputFile": "com.catalogizer.android.app-mergeDebugResources-76:/values-v31/values-v31.xml",
             "map": [
                 {
-                    "source": "/home/milosvasic/.gradle/caches/transforms-3/c722ac5f67d08996a2354b68d059d86c/transformed/core-splashscreen-1.0.1/res/values-v31/values-v31.xml",
+                    "source": "/home/milosvasic/.gradle/caches/transforms-3/58d08e8d74e58fcc5a839b832ae6ba08/transformed/core-splashscreen-1.0.1/res/values-v31/values-v31.xml",
                     "from": {
                         "startLines": "2,9",
                         "startColumns": "4,4",
