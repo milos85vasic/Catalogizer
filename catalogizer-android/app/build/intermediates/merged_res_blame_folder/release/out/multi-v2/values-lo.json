@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.catalogizer.android.app-mergeReleaseResources-73:/values-lo/values-lo.xml",
+            "outputFile": "com.catalogizer.android.app-mergeReleaseResources-69:/values-lo/values-lo.xml",
             "map": [
                 {
                     "source": "/home/milosvasic/.gradle/caches/transforms-3/63291e1501d3dae979a26c57c047f1ad/transformed/media3-ui-1.2.0/res/values-lo/values-lo.xml",

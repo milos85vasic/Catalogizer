@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.catalogizer.android.app-mergeReleaseResources-73:/values-pl/values-pl.xml",
+            "outputFile": "com.catalogizer.android.app-mergeReleaseResources-69:/values-pl/values-pl.xml",
             "map": [
                 {
                     "source": "/home/milosvasic/.gradle/caches/transforms-3/867526a176516fed766633d625183be4/transformed/media3-exoplayer-1.2.0/res/values-pl/values-pl.xml",
