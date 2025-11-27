@@ -4,7 +4,7 @@
             "outputFile": "com.catalogizer.android.app-mergeDebugResources-72:/values-v23/values-v23.xml",
             "map": [
                 {
-                    "source": "/home/milosvasic/.gradle/caches/transforms-3/572082e6ca17fe95af5209750f4fb2d0/transformed/work-runtime-2.9.0/res/values-v23/values-v23.xml",
+                    "source": "/Volumes/T7/Gradle/caches/transforms-3/572082e6ca17fe95af5209750f4fb2d0/transformed/work-runtime-2.9.0/res/values-v23/values-v23.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
