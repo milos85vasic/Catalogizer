@@ -4,24 +4,24 @@
             "outputFile": "com.catalogizer.android.app-mergeReleaseResources-69:/values-hy/values-hy.xml",
             "map": [
                 {
-                    "source": "/home/milosvasic/.gradle/caches/transforms-3/867526a176516fed766633d625183be4/transformed/media3-exoplayer-1.2.0/res/values-hy/values-hy.xml",
+                    "source": "/Volumes/T7/Gradle/caches/transforms-3/0bb967c933a93c7b14778af2157fd563/transformed/ui-release/res/values-hy/values-hy.xml",
                     "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10",
-                        "startColumns": "4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,127,190,254,322,403,480,554,631",
-                        "endColumns": "71,62,63,67,80,76,73,76,77",
-                        "endOffsets": "122,185,249,317,398,475,549,626,704"
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,204,286,380,480,563,645,731,826,908,980,1051,1136,1224,1298,1379,1448",
+                        "endColumns": "98,81,93,99,82,81,85,94,81,71,70,84,87,73,80,68,117",
+                        "endOffsets": "199,281,375,475,558,640,726,821,903,975,1046,1131,1219,1293,1374,1443,1561"
                     },
                     "to": {
-                        "startLines": "92,93,94,95,96,97,98,99,100",
-                        "startColumns": "4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "8132,8204,8267,8331,8399,8480,8557,8631,8708",
-                        "endColumns": "71,62,63,67,80,76,73,76,77",
-                        "endOffsets": "8199,8262,8326,8394,8475,8552,8626,8703,8781"
+                        "startLines": "30,31,64,65,67,120,121,122,123,124,125,126,127,129,133,134,135",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "1875,1974,5748,5842,6029,10005,10087,10173,10268,10350,10422,10493,10578,10750,11116,11197,11266",
+                        "endColumns": "98,81,93,99,82,81,85,94,81,71,70,84,87,73,80,68,117",
+                        "endOffsets": "1969,2051,5837,5937,6107,10082,10168,10263,10345,10417,10488,10573,10661,10819,11192,11261,11379"
                     }
                 },
                 {
-                    "source": "/home/milosvasic/.gradle/caches/transforms-3/63291e1501d3dae979a26c57c047f1ad/transformed/media3-ui-1.2.0/res/values-hy/values-hy.xml",
+                    "source": "/Volumes/T7/Gradle/caches/transforms-3/63291e1501d3dae979a26c57c047f1ad/transformed/media3-ui-1.2.0/res/values-hy/values-hy.xml",
                     "from": {
                         "startLines": "2,11,15,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -40,24 +40,7 @@
                     }
                 },
                 {
-                    "source": "/home/milosvasic/.gradle/caches/transforms-3/009c722b605a074b0a2a2a4927ac9763/transformed/core-1.12.0/res/values-hy/values-hy.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,155,260,358,457,562,664,775",
-                        "endColumns": "99,104,97,98,104,101,110,100",
-                        "endOffsets": "150,255,353,452,557,659,770,871"
-                    },
-                    "to": {
-                        "startLines": "23,24,25,26,27,28,29,131",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "1155,1255,1360,1458,1557,1662,1764,10905",
-                        "endColumns": "99,104,97,98,104,101,110,100",
-                        "endOffsets": "1250,1355,1453,1552,1657,1759,1870,11001"
-                    }
-                },
-                {
-                    "source": "/home/milosvasic/.gradle/caches/transforms-3/cd21e05b135c9a3044e9acf9859124f0/transformed/material3-1.1.2/res/values-hy/values-hy.xml",
+                    "source": "/Volumes/T7/Gradle/caches/transforms-3/cd21e05b135c9a3044e9acf9859124f0/transformed/material3-1.1.2/res/values-hy/values-hy.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -74,20 +57,37 @@
                     }
                 },
                 {
-                    "source": "/home/milosvasic/.gradle/caches/transforms-3/0bb967c933a93c7b14778af2157fd563/transformed/ui-release/res/values-hy/values-hy.xml",
+                    "source": "/Volumes/T7/Gradle/caches/transforms-3/867526a176516fed766633d625183be4/transformed/media3-exoplayer-1.2.0/res/values-hy/values-hy.xml",
                     "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,204,286,380,480,563,645,731,826,908,980,1051,1136,1224,1298,1379,1448",
-                        "endColumns": "98,81,93,99,82,81,85,94,81,71,70,84,87,73,80,68,117",
-                        "endOffsets": "199,281,375,475,558,640,726,821,903,975,1046,1131,1219,1293,1374,1443,1561"
+                        "startLines": "2,3,4,5,6,7,8,9,10",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,127,190,254,322,403,480,554,631",
+                        "endColumns": "71,62,63,67,80,76,73,76,77",
+                        "endOffsets": "122,185,249,317,398,475,549,626,704"
                     },
                     "to": {
-                        "startLines": "30,31,64,65,67,120,121,122,123,124,125,126,127,129,133,134,135",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "1875,1974,5748,5842,6029,10005,10087,10173,10268,10350,10422,10493,10578,10750,11116,11197,11266",
-                        "endColumns": "98,81,93,99,82,81,85,94,81,71,70,84,87,73,80,68,117",
-                        "endOffsets": "1969,2051,5837,5937,6107,10082,10168,10263,10345,10417,10488,10573,10661,10819,11192,11261,11379"
+                        "startLines": "92,93,94,95,96,97,98,99,100",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "8132,8204,8267,8331,8399,8480,8557,8631,8708",
+                        "endColumns": "71,62,63,67,80,76,73,76,77",
+                        "endOffsets": "8199,8262,8326,8394,8475,8552,8626,8703,8781"
+                    }
+                },
+                {
+                    "source": "/Volumes/T7/Gradle/caches/transforms-3/009c722b605a074b0a2a2a4927ac9763/transformed/core-1.12.0/res/values-hy/values-hy.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,155,260,358,457,562,664,775",
+                        "endColumns": "99,104,97,98,104,101,110,100",
+                        "endOffsets": "150,255,353,452,557,659,770,871"
+                    },
+                    "to": {
+                        "startLines": "23,24,25,26,27,28,29,131",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "1155,1255,1360,1458,1557,1662,1764,10905",
+                        "endColumns": "99,104,97,98,104,101,110,100",
+                        "endOffsets": "1250,1355,1453,1552,1657,1759,1870,11001"
                     }
                 }
             ]

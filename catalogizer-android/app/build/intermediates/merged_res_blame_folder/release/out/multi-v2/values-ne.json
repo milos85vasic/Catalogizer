@@ -4,7 +4,7 @@
             "outputFile": "com.catalogizer.android.app-mergeReleaseResources-69:/values-ne/values-ne.xml",
             "map": [
                 {
-                    "source": "/home/milosvasic/.gradle/caches/transforms-3/cd21e05b135c9a3044e9acf9859124f0/transformed/material3-1.1.2/res/values-ne/values-ne.xml",
+                    "source": "/Volumes/T7/Gradle/caches/transforms-3/cd21e05b135c9a3044e9acf9859124f0/transformed/material3-1.1.2/res/values-ne/values-ne.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "/home/milosvasic/.gradle/caches/transforms-3/867526a176516fed766633d625183be4/transformed/media3-exoplayer-1.2.0/res/values-ne/values-ne.xml",
+                    "source": "/Volumes/T7/Gradle/caches/transforms-3/867526a176516fed766633d625183be4/transformed/media3-exoplayer-1.2.0/res/values-ne/values-ne.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10",
                         "startColumns": "4,4,4,4,4,4,4,4,4",
@@ -38,7 +38,24 @@
                     }
                 },
                 {
-                    "source": "/home/milosvasic/.gradle/caches/transforms-3/63291e1501d3dae979a26c57c047f1ad/transformed/media3-ui-1.2.0/res/values-ne/values-ne.xml",
+                    "source": "/Volumes/T7/Gradle/caches/transforms-3/0bb967c933a93c7b14778af2157fd563/transformed/ui-release/res/values-ne/values-ne.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,204,294,388,485,571,653,749,836,922,988,1054,1144,1237,1314,1395,1463",
+                        "endColumns": "98,89,93,96,85,81,95,86,85,65,65,89,92,76,80,67,119",
+                        "endOffsets": "199,289,383,480,566,648,744,831,917,983,1049,1139,1232,1309,1390,1458,1578"
+                    },
+                    "to": {
+                        "startLines": "30,31,64,65,67,120,121,122,123,124,125,126,127,129,133,134,135",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "1977,2076,5925,6019,6187,10248,10330,10426,10513,10599,10665,10731,10821,11001,11368,11449,11517",
+                        "endColumns": "98,89,93,96,85,81,95,86,85,65,65,89,92,76,80,67,119",
+                        "endOffsets": "2071,2161,6014,6111,6268,10325,10421,10508,10594,10660,10726,10816,10909,11073,11444,11512,11632"
+                    }
+                },
+                {
+                    "source": "/Volumes/T7/Gradle/caches/transforms-3/63291e1501d3dae979a26c57c047f1ad/transformed/media3-ui-1.2.0/res/values-ne/values-ne.xml",
                     "from": {
                         "startLines": "2,11,15,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -57,7 +74,7 @@
                     }
                 },
                 {
-                    "source": "/home/milosvasic/.gradle/caches/transforms-3/009c722b605a074b0a2a2a4927ac9763/transformed/core-1.12.0/res/values-ne/values-ne.xml",
+                    "source": "/Volumes/T7/Gradle/caches/transforms-3/009c722b605a074b0a2a2a4927ac9763/transformed/core-1.12.0/res/values-ne/values-ne.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -71,23 +88,6 @@
                         "startOffsets": "1257,1360,1463,1565,1671,1769,1869,11164",
                         "endColumns": "102,102,101,105,97,99,107,100",
                         "endOffsets": "1355,1458,1560,1666,1764,1864,1972,11260"
-                    }
-                },
-                {
-                    "source": "/home/milosvasic/.gradle/caches/transforms-3/0bb967c933a93c7b14778af2157fd563/transformed/ui-release/res/values-ne/values-ne.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,204,294,388,485,571,653,749,836,922,988,1054,1144,1237,1314,1395,1463",
-                        "endColumns": "98,89,93,96,85,81,95,86,85,65,65,89,92,76,80,67,119",
-                        "endOffsets": "199,289,383,480,566,648,744,831,917,983,1049,1139,1232,1309,1390,1458,1578"
-                    },
-                    "to": {
-                        "startLines": "30,31,64,65,67,120,121,122,123,124,125,126,127,129,133,134,135",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "1977,2076,5925,6019,6187,10248,10330,10426,10513,10599,10665,10731,10821,11001,11368,11449,11517",
-                        "endColumns": "98,89,93,96,85,81,95,86,85,65,65,89,92,76,80,67,119",
-                        "endOffsets": "2071,2161,6014,6111,6268,10325,10421,10508,10594,10660,10726,10816,10909,11073,11444,11512,11632"
                     }
                 }
             ]
