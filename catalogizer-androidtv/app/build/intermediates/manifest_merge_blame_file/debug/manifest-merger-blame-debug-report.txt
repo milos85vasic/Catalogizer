@@ -163,8 +163,8 @@
 94
 95        <!-- TV Content Provider -->
 96        <provider
-97            android:name="com.catalogizer.androidtv.data.tv.CatalogizerTvProvider"
-97-->/Volumes/T7/Projects/Catalogizer/catalogizer-androidtv/app/src/main/AndroidManifest.xml:81:13-58
+97            android:name="com.catalogizer.androidtv.data.tv.CatalogizerTvProviderImpl"
+97-->/Volumes/T7/Projects/Catalogizer/catalogizer-androidtv/app/src/main/AndroidManifest.xml:81:13-62
 98            android:authorities="com.catalogizer.androidtv.tv"
 98-->/Volumes/T7/Projects/Catalogizer/catalogizer-androidtv/app/src/main/AndroidManifest.xml:82:13-54
 99            android:enabled="true"

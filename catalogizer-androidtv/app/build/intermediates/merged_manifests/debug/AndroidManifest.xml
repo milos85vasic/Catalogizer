@@ -94,7 +94,7 @@
 
         <!-- TV Content Provider -->
         <provider
-            android:name="com.catalogizer.androidtv.data.tv.CatalogizerTvProvider"
+            android:name="com.catalogizer.androidtv.data.tv.CatalogizerTvProviderImpl"
             android:authorities="com.catalogizer.androidtv.tv"
             android:enabled="true"
             android:exported="true" />
