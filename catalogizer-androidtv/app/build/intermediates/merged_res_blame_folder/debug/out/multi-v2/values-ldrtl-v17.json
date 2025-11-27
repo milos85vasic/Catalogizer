@@ -4,7 +4,7 @@
             "outputFile": "com.catalogizer.androidtv.app-mergeDebugResources-77:/values-ldrtl-v17/values-ldrtl-v17.xml",
             "map": [
                 {
-                    "source": "/home/milosvasic/.gradle/caches/transforms-3/825ab34624559928c3e78ecb225c06ee/transformed/leanback-1.0.0/res/values-ldrtl-v17/values-ldrtl-v17.xml",
+                    "source": "/Volumes/T7/Gradle/caches/transforms-3/825ab34624559928c3e78ecb225c06ee/transformed/leanback-1.0.0/res/values-ldrtl-v17/values-ldrtl-v17.xml",
                     "from": {
                         "startLines": "2,3,4",
                         "startColumns": "4,4,4",
