@@ -1,5 +1,5 @@
 -- Merging decision tree log ---
-provider#com.catalogizer.androidtv.data.tv.CatalogizerTvProvider
+provider#com.catalogizer.androidtv.data.tv.CatalogizerTvProviderImpl
 INJECTED from /Volumes/T7/Projects/Catalogizer/catalogizer-androidtv/app/src/main/AndroidManifest.xml:80:9-84:39
 	android:enabled
 		ADDED from /Volumes/T7/Projects/Catalogizer/catalogizer-androidtv/app/src/main/AndroidManifest.xml:83:13-35
@@ -9,7 +9,7 @@ INJECTED from /Volumes/T7/Projects/Catalogizer/catalogizer-androidtv/app/src/mai
 	android:exported
 		ADDED from /Volumes/T7/Projects/Catalogizer/catalogizer-androidtv/app/src/main/AndroidManifest.xml:84:13-36
 	android:name
-		ADDED from /Volumes/T7/Projects/Catalogizer/catalogizer-androidtv/app/src/main/AndroidManifest.xml:81:13-58
+		ADDED from /Volumes/T7/Projects/Catalogizer/catalogizer-androidtv/app/src/main/AndroidManifest.xml:81:13-62
 provider#androidx.core.content.FileProvider
 INJECTED from /Volumes/T7/Projects/Catalogizer/catalogizer-androidtv/app/src/main/AndroidManifest.xml:87:9-95:20
 	android:grantUriPermissions
