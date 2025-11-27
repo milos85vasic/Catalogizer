@@ -1,7 +1,7 @@
 [
     {
-        "merged": "/home/milosvasic/.gradle/daemon/8.5/com.catalogizer.androidtv.app-merged_res-79:/mipmap-hdpi_ic_launcher_round.png.flat",
-        "source": "/home/milosvasic/.gradle/daemon/8.5/com.catalogizer.androidtv.app-main-81:/mipmap-hdpi/ic_launcher_round.png"
+        "merged": "com.catalogizer.androidtv.app-merged_res-79:/mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "com.catalogizer.androidtv.app-main-81:/mipmap-xhdpi/ic_launcher_round.png"
     },
     {
         "merged": "com.catalogizer.androidtv.app-merged_res-79:/xml_data_extraction_rules.xml.flat",
@@ -12,47 +12,47 @@
         "source": "com.catalogizer.androidtv.app-main-81:/xml/file_paths.xml"
     },
     {
-        "merged": "/home/milosvasic/.gradle/daemon/8.5/com.catalogizer.androidtv.app-merged_res-79:/mipmap-xhdpi_ic_launcher_round.png.flat",
-        "source": "/home/milosvasic/.gradle/daemon/8.5/com.catalogizer.androidtv.app-main-81:/mipmap-xhdpi/ic_launcher_round.png"
+        "merged": "com.catalogizer.androidtv.app-merged_res-79:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "com.catalogizer.androidtv.app-main-81:/mipmap-hdpi/ic_launcher.png"
     },
     {
-        "merged": "/home/milosvasic/.gradle/daemon/8.5/com.catalogizer.androidtv.app-merged_res-79:/mipmap-xxhdpi_ic_launcher_round.png.flat",
-        "source": "/home/milosvasic/.gradle/daemon/8.5/com.catalogizer.androidtv.app-main-81:/mipmap-xxhdpi/ic_launcher_round.png"
+        "merged": "com.catalogizer.androidtv.app-merged_res-79:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "com.catalogizer.androidtv.app-main-81:/mipmap-xxxhdpi/ic_launcher.png"
     },
     {
-        "merged": "/home/milosvasic/.gradle/daemon/8.5/com.catalogizer.androidtv.app-merged_res-79:/mipmap-xxxhdpi_ic_launcher_round.png.flat",
-        "source": "/home/milosvasic/.gradle/daemon/8.5/com.catalogizer.androidtv.app-main-81:/mipmap-xxxhdpi/ic_launcher_round.png"
+        "merged": "com.catalogizer.androidtv.app-merged_res-79:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "com.catalogizer.androidtv.app-main-81:/mipmap-xhdpi/ic_launcher.png"
     },
     {
-        "merged": "/home/milosvasic/.gradle/daemon/8.5/com.catalogizer.androidtv.app-merged_res-79:/mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "/home/milosvasic/.gradle/daemon/8.5/com.catalogizer.androidtv.app-main-81:/mipmap-xxhdpi/ic_launcher.png"
+        "merged": "com.catalogizer.androidtv.app-merged_res-79:/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "com.catalogizer.androidtv.app-main-81:/mipmap-hdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.catalogizer.androidtv.app-merged_res-79:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "com.catalogizer.androidtv.app-main-81:/mipmap-mdpi/ic_launcher.png"
     },
     {
         "merged": "com.catalogizer.androidtv.app-merged_res-79:/xml_backup_rules.xml.flat",
         "source": "com.catalogizer.androidtv.app-main-81:/xml/backup_rules.xml"
     },
     {
-        "merged": "/home/milosvasic/.gradle/daemon/8.5/com.catalogizer.androidtv.app-merged_res-79:/mipmap-xxxhdpi_ic_launcher.png.flat",
-        "source": "/home/milosvasic/.gradle/daemon/8.5/com.catalogizer.androidtv.app-main-81:/mipmap-xxxhdpi/ic_launcher.png"
+        "merged": "com.catalogizer.androidtv.app-merged_res-79:/mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "com.catalogizer.androidtv.app-main-81:/mipmap-xxhdpi/ic_launcher_round.png"
     },
     {
-        "merged": "/home/milosvasic/.gradle/daemon/8.5/com.catalogizer.androidtv.app-merged_res-79:/mipmap-xhdpi_ic_launcher.png.flat",
-        "source": "/home/milosvasic/.gradle/daemon/8.5/com.catalogizer.androidtv.app-main-81:/mipmap-xhdpi/ic_launcher.png"
+        "merged": "com.catalogizer.androidtv.app-merged_res-79:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "com.catalogizer.androidtv.app-main-81:/mipmap-xxhdpi/ic_launcher.png"
     },
     {
-        "merged": "/home/milosvasic/.gradle/daemon/8.5/com.catalogizer.androidtv.app-merged_res-79:/mipmap-hdpi_ic_launcher.png.flat",
-        "source": "/home/milosvasic/.gradle/daemon/8.5/com.catalogizer.androidtv.app-main-81:/mipmap-hdpi/ic_launcher.png"
+        "merged": "com.catalogizer.androidtv.app-merged_res-79:/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "com.catalogizer.androidtv.app-main-81:/mipmap-xxxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.catalogizer.androidtv.app-merged_res-79:/mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "com.catalogizer.androidtv.app-main-81:/mipmap-mdpi/ic_launcher_round.png"
     },
     {
         "merged": "com.catalogizer.androidtv.app-merged_res-79:/drawable_app_banner.xml.flat",
         "source": "com.catalogizer.androidtv.app-main-81:/drawable/app_banner.xml"
-    },
-    {
-        "merged": "/home/milosvasic/.gradle/daemon/8.5/com.catalogizer.androidtv.app-merged_res-79:/mipmap-mdpi_ic_launcher_round.png.flat",
-        "source": "/home/milosvasic/.gradle/daemon/8.5/com.catalogizer.androidtv.app-main-81:/mipmap-mdpi/ic_launcher_round.png"
-    },
-    {
-        "merged": "/home/milosvasic/.gradle/daemon/8.5/com.catalogizer.androidtv.app-merged_res-79:/mipmap-mdpi_ic_launcher.png.flat",
-        "source": "/home/milosvasic/.gradle/daemon/8.5/com.catalogizer.androidtv.app-main-81:/mipmap-mdpi/ic_launcher.png"
     }
 ]

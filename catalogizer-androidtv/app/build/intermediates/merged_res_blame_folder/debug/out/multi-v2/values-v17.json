@@ -4,7 +4,18 @@
             "outputFile": "com.catalogizer.androidtv.app-mergeDebugResources-77:/values-v17/values-v17.xml",
             "map": [
                 {
-                    "source": "/home/milosvasic/.gradle/caches/transforms-3/0475983b1f18ee8bd22aeefb5ed5e058/transformed/appcompat-1.6.1/res/values-v17/values-v17.xml",
+                    "source": "/Volumes/T7/Gradle/caches/transforms-3/9e0b27ff3bffd593a329b1634274f546/transformed/preference-1.0.0/res/values-v17/values-v17.xml",
+                    "from": {
+                        "startLines": "2,7,11",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,280,441",
+                        "endLines": "6,10,14",
+                        "endColumns": "12,12,12",
+                        "endOffsets": "275,436,604"
+                    }
+                },
+                {
+                    "source": "/Volumes/T7/Gradle/caches/transforms-3/0475983b1f18ee8bd22aeefb5ed5e058/transformed/appcompat-1.6.1/res/values-v17/values-v17.xml",
                     "from": {
                         "startLines": "2,5,9,12,15,18,22,25,29,33,37,40,43,46,50,53,57",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -20,17 +31,6 @@
                         "endLines": "17,21,24,27,30,34,37,41,45,49,52,55,58,62,65,69,73",
                         "endColumns": "12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12",
                         "endOffsets": "777,1005,1163,1313,1485,1710,1880,2108,2332,2574,2745,2919,3088,3361,3561,3765,4094"
-                    }
-                },
-                {
-                    "source": "/home/milosvasic/.gradle/caches/transforms-3/9e0b27ff3bffd593a329b1634274f546/transformed/preference-1.0.0/res/values-v17/values-v17.xml",
-                    "from": {
-                        "startLines": "2,7,11",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "55,280,441",
-                        "endLines": "6,10,14",
-                        "endColumns": "12,12,12",
-                        "endOffsets": "275,436,604"
                     }
                 }
             ]

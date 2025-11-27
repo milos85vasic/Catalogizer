@@ -4,7 +4,17 @@
             "outputFile": "com.catalogizer.androidtv.app-mergeDebugResources-77:/values-v24/values-v24.xml",
             "map": [
                 {
-                    "source": "/home/milosvasic/.gradle/caches/transforms-3/b16b143332b9aa20f4696499cca1bd50/transformed/media-1.6.0/res/values-v24/values-v24.xml",
+                    "source": "/Volumes/T7/Gradle/caches/transforms-3/0475983b1f18ee8bd22aeefb5ed5e058/transformed/appcompat-1.6.1/res/values-v24/values-v24.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,212",
+                        "endColumns": "156,134",
+                        "endOffsets": "207,342"
+                    }
+                },
+                {
+                    "source": "/Volumes/T7/Gradle/caches/transforms-3/b16b143332b9aa20f4696499cca1bd50/transformed/media-1.6.0/res/values-v24/values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
@@ -18,16 +28,6 @@
                         "startOffsets": "347,413,474,540",
                         "endColumns": "65,60,65,66",
                         "endOffsets": "408,469,535,602"
-                    }
-                },
-                {
-                    "source": "/home/milosvasic/.gradle/caches/transforms-3/0475983b1f18ee8bd22aeefb5ed5e058/transformed/appcompat-1.6.1/res/values-v24/values-v24.xml",
-                    "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,212",
-                        "endColumns": "156,134",
-                        "endOffsets": "207,342"
                     }
                 }
             ]

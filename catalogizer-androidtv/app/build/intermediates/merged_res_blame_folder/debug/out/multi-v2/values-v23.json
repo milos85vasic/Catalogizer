@@ -4,7 +4,7 @@
             "outputFile": "com.catalogizer.androidtv.app-mergeDebugResources-77:/values-v23/values-v23.xml",
             "map": [
                 {
-                    "source": "/home/milosvasic/.gradle/caches/transforms-3/0475983b1f18ee8bd22aeefb5ed5e058/transformed/appcompat-1.6.1/res/values-v23/values-v23.xml",
+                    "source": "/Volumes/T7/Gradle/caches/transforms-3/0475983b1f18ee8bd22aeefb5ed5e058/transformed/appcompat-1.6.1/res/values-v23/values-v23.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,20,34,35,36,39,43,44,45,46",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",

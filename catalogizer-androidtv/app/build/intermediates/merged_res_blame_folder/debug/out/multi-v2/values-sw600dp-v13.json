@@ -4,7 +4,7 @@
             "outputFile": "com.catalogizer.androidtv.app-mergeDebugResources-77:/values-sw600dp-v13/values-sw600dp-v13.xml",
             "map": [
                 {
-                    "source": "/home/milosvasic/.gradle/caches/transforms-3/0475983b1f18ee8bd22aeefb5ed5e058/transformed/appcompat-1.6.1/res/values-sw600dp-v13/values-sw600dp-v13.xml",
+                    "source": "/Volumes/T7/Gradle/caches/transforms-3/0475983b1f18ee8bd22aeefb5ed5e058/transformed/appcompat-1.6.1/res/values-sw600dp-v13/values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
