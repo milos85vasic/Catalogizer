@@ -32,10 +32,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.Callable;
+import javax.annotation.processing.Generated;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
 import kotlinx.coroutines.flow.Flow;
 
+@Generated("androidx.room.RoomProcessor")
 @SuppressWarnings({"unchecked", "deprecation"})
 public final class MediaDao_Impl implements MediaDao {
   private final RoomDatabase __db;
@@ -518,6 +520,31 @@ public final class MediaDao_Impl implements MediaDao {
 
   @Override
   public Object deleteMediaById(final long id, final Continuation<? super Unit> $completion) {
+    return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
+      @Override
+      @NonNull
+      public Unit call() throws Exception {
+        final SupportSQLiteStatement _stmt = __preparedStmtOfDeleteMediaById.acquire();
+        int _argIndex = 1;
+        _stmt.bindLong(_argIndex, id);
+        try {
+          __db.beginTransaction();
+          try {
+            _stmt.executeUpdateDelete();
+            __db.setTransactionSuccessful();
+            return Unit.INSTANCE;
+          } finally {
+            __db.endTransaction();
+          }
+        } finally {
+          __preparedStmtOfDeleteMediaById.release(_stmt);
+        }
+      }
+    }, $completion);
+  }
+
+  @Override
+  public Object deleteById(final long id, final Continuation<? super Unit> $completion) {
     return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
       @Override
       @NonNull
