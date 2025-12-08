@@ -21,7 +21,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import javax.annotation.processing.Generated;
 
+@Generated("androidx.room.RoomProcessor")
 @SuppressWarnings({"unchecked", "deprecation"})
 public final class CatalogizerDatabase_Impl extends CatalogizerDatabase {
   private volatile MediaDao _mediaDao;
@@ -31,6 +33,10 @@ public final class CatalogizerDatabase_Impl extends CatalogizerDatabase {
   private volatile DownloadDao _downloadDao;
 
   private volatile SyncOperationDao _syncOperationDao;
+
+  private volatile WatchProgressDao _watchProgressDao;
+
+  private volatile FavoriteDao _favoriteDao;
 
   @Override
   @NonNull
@@ -42,8 +48,10 @@ public final class CatalogizerDatabase_Impl extends CatalogizerDatabase {
         db.execSQL("CREATE TABLE IF NOT EXISTS `search_history` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `query` TEXT NOT NULL, `timestamp` INTEGER NOT NULL, `resultsCount` INTEGER NOT NULL)");
         db.execSQL("CREATE TABLE IF NOT EXISTS `download_items` (`media_id` INTEGER NOT NULL, `title` TEXT NOT NULL, `coverImage` TEXT, `downloadUrl` TEXT NOT NULL, `localPath` TEXT, `progress` REAL NOT NULL, `status` TEXT NOT NULL, `created_at` INTEGER NOT NULL, `updated_at` INTEGER NOT NULL, PRIMARY KEY(`media_id`))");
         db.execSQL("CREATE TABLE IF NOT EXISTS `sync_operations` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `type` TEXT NOT NULL, `mediaId` INTEGER NOT NULL, `data` TEXT, `timestamp` INTEGER NOT NULL, `retryCount` INTEGER NOT NULL, `maxRetries` INTEGER NOT NULL)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `watch_progress` (`media_id` INTEGER NOT NULL, `progress` REAL NOT NULL, `last_watched` INTEGER NOT NULL, `updated_at` INTEGER NOT NULL, PRIMARY KEY(`media_id`))");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `favorites` (`media_id` INTEGER NOT NULL, `created_at` INTEGER NOT NULL, `updated_at` INTEGER NOT NULL, PRIMARY KEY(`media_id`))");
         db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'bfbbc86018f999421aac4f2f979a3433')");
+        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'ab00c844bd4982724b58ce4d857eb92c')");
       }
 
       @Override
@@ -52,6 +60,8 @@ public final class CatalogizerDatabase_Impl extends CatalogizerDatabase {
         db.execSQL("DROP TABLE IF EXISTS `search_history`");
         db.execSQL("DROP TABLE IF EXISTS `download_items`");
         db.execSQL("DROP TABLE IF EXISTS `sync_operations`");
+        db.execSQL("DROP TABLE IF EXISTS `watch_progress`");
+        db.execSQL("DROP TABLE IF EXISTS `favorites`");
         final List<? extends RoomDatabase.Callback> _callbacks = mCallbacks;
         if (_callbacks != null) {
           for (RoomDatabase.Callback _callback : _callbacks) {
@@ -175,9 +185,36 @@ public final class CatalogizerDatabase_Impl extends CatalogizerDatabase {
                   + " Expected:\n" + _infoSyncOperations + "\n"
                   + " Found:\n" + _existingSyncOperations);
         }
+        final HashMap<String, TableInfo.Column> _columnsWatchProgress = new HashMap<String, TableInfo.Column>(4);
+        _columnsWatchProgress.put("media_id", new TableInfo.Column("media_id", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsWatchProgress.put("progress", new TableInfo.Column("progress", "REAL", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsWatchProgress.put("last_watched", new TableInfo.Column("last_watched", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsWatchProgress.put("updated_at", new TableInfo.Column("updated_at", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        final HashSet<TableInfo.ForeignKey> _foreignKeysWatchProgress = new HashSet<TableInfo.ForeignKey>(0);
+        final HashSet<TableInfo.Index> _indicesWatchProgress = new HashSet<TableInfo.Index>(0);
+        final TableInfo _infoWatchProgress = new TableInfo("watch_progress", _columnsWatchProgress, _foreignKeysWatchProgress, _indicesWatchProgress);
+        final TableInfo _existingWatchProgress = TableInfo.read(db, "watch_progress");
+        if (!_infoWatchProgress.equals(_existingWatchProgress)) {
+          return new RoomOpenHelper.ValidationResult(false, "watch_progress(com.catalogizer.android.data.local.WatchProgress).\n"
+                  + " Expected:\n" + _infoWatchProgress + "\n"
+                  + " Found:\n" + _existingWatchProgress);
+        }
+        final HashMap<String, TableInfo.Column> _columnsFavorites = new HashMap<String, TableInfo.Column>(3);
+        _columnsFavorites.put("media_id", new TableInfo.Column("media_id", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsFavorites.put("created_at", new TableInfo.Column("created_at", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsFavorites.put("updated_at", new TableInfo.Column("updated_at", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        final HashSet<TableInfo.ForeignKey> _foreignKeysFavorites = new HashSet<TableInfo.ForeignKey>(0);
+        final HashSet<TableInfo.Index> _indicesFavorites = new HashSet<TableInfo.Index>(0);
+        final TableInfo _infoFavorites = new TableInfo("favorites", _columnsFavorites, _foreignKeysFavorites, _indicesFavorites);
+        final TableInfo _existingFavorites = TableInfo.read(db, "favorites");
+        if (!_infoFavorites.equals(_existingFavorites)) {
+          return new RoomOpenHelper.ValidationResult(false, "favorites(com.catalogizer.android.data.local.Favorite).\n"
+                  + " Expected:\n" + _infoFavorites + "\n"
+                  + " Found:\n" + _existingFavorites);
+        }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "bfbbc86018f999421aac4f2f979a3433", "a5f6622bd56afea7ddf1115e80758da5");
+    }, "ab00c844bd4982724b58ce4d857eb92c", "8c58461b4ece64570b5166ae7dcde1d1");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(config.context).name(config.name).callback(_openCallback).build();
     final SupportSQLiteOpenHelper _helper = config.sqliteOpenHelperFactory.create(_sqliteConfig);
     return _helper;
@@ -188,7 +225,7 @@ public final class CatalogizerDatabase_Impl extends CatalogizerDatabase {
   protected InvalidationTracker createInvalidationTracker() {
     final HashMap<String, String> _shadowTablesMap = new HashMap<String, String>(0);
     final HashMap<String, Set<String>> _viewTables = new HashMap<String, Set<String>>(0);
-    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "media_items","search_history","download_items","sync_operations");
+    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "media_items","search_history","download_items","sync_operations","watch_progress","favorites");
   }
 
   @Override
@@ -201,6 +238,8 @@ public final class CatalogizerDatabase_Impl extends CatalogizerDatabase {
       _db.execSQL("DELETE FROM `search_history`");
       _db.execSQL("DELETE FROM `download_items`");
       _db.execSQL("DELETE FROM `sync_operations`");
+      _db.execSQL("DELETE FROM `watch_progress`");
+      _db.execSQL("DELETE FROM `favorites`");
       super.setTransactionSuccessful();
     } finally {
       super.endTransaction();
@@ -219,6 +258,8 @@ public final class CatalogizerDatabase_Impl extends CatalogizerDatabase {
     _typeConvertersMap.put(SearchHistoryDao.class, SearchHistoryDao_Impl.getRequiredConverters());
     _typeConvertersMap.put(DownloadDao.class, DownloadDao_Impl.getRequiredConverters());
     _typeConvertersMap.put(SyncOperationDao.class, SyncOperationDao_Impl.getRequiredConverters());
+    _typeConvertersMap.put(WatchProgressDao.class, WatchProgressDao_Impl.getRequiredConverters());
+    _typeConvertersMap.put(FavoriteDao.class, FavoriteDao_Impl.getRequiredConverters());
     return _typeConvertersMap;
   }
 
@@ -289,6 +330,34 @@ public final class CatalogizerDatabase_Impl extends CatalogizerDatabase {
           _syncOperationDao = new SyncOperationDao_Impl(this);
         }
         return _syncOperationDao;
+      }
+    }
+  }
+
+  @Override
+  public WatchProgressDao watchProgressDao() {
+    if (_watchProgressDao != null) {
+      return _watchProgressDao;
+    } else {
+      synchronized(this) {
+        if(_watchProgressDao == null) {
+          _watchProgressDao = new WatchProgressDao_Impl(this);
+        }
+        return _watchProgressDao;
+      }
+    }
+  }
+
+  @Override
+  public FavoriteDao favoriteDao() {
+    if (_favoriteDao != null) {
+      return _favoriteDao;
+    } else {
+      synchronized(this) {
+        if(_favoriteDao == null) {
+          _favoriteDao = new FavoriteDao_Impl(this);
+        }
+        return _favoriteDao;
       }
     }
   }
