@@ -300,6 +300,8 @@ func TestRecommendationService_ExternalProviders(t *testing.T) {
 	recommendationService := services.NewRecommendationService(
 		mediaRecognitionService,
 		duplicateDetectionService,
+		mockRepo,
+		nil,
 	)
 
 	t.Run("TMDb movie recommendations", func(t *testing.T) {
@@ -439,6 +441,8 @@ func TestRecommendationService_Performance(t *testing.T) {
 	recommendationService := services.NewRecommendationService(
 		mediaRecognitionService,
 		duplicateDetectionService,
+		mockRepo,
+		nil,
 	)
 
 	t.Run("performance metrics", func(t *testing.T) {
@@ -515,6 +519,8 @@ func TestRecommendationService_EdgeCases(t *testing.T) {
 	recommendationService := services.NewRecommendationService(
 		mediaRecognitionService,
 		duplicateDetectionService,
+		mockRepo,
+		nil,
 	)
 
 	t.Run("empty media metadata", func(t *testing.T) {
@@ -656,6 +662,8 @@ func TestRecommendationService_SimilarityAlgorithms(t *testing.T) {
 	recommendationService := services.NewRecommendationService(
 		mediaRecognitionService,
 		duplicateDetectionService,
+		mockRepo,
+		nil,
 	)
 
 	t.Run("title similarity", func(t *testing.T) {

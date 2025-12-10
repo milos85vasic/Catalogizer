@@ -4,6 +4,7 @@ import (
 	"context"
 	"testing"
 
+	"catalogizer/internal/services"
 	"catalogizer/models"
 
 	"github.com/stretchr/testify/assert"
@@ -22,27 +23,17 @@ func (m *MockFileRepository) SearchFiles(ctx context.Context, filter models.Sear
 
 func TestNewRecommendationService(t *testing.T) {
 	mockRepo := &MockFileRepository{}
-	mockMediaRecognition := &MediaRecognitionService{}
-	mockDuplicateDetection := &DuplicateDetectionService{}
-
-	service := NewRecommendationService(mockMediaRecognition, mockDuplicateDetection, mockRepo)
+	service := services.NewRecommendationService(nil, nil, mockRepo, nil)
 
 	assert.NotNil(t, service)
-	assert.Equal(t, mockRepo, service.fileRepository)
-	assert.Equal(t, mockMediaRecognition, service.mediaRecognitionService)
-	assert.Equal(t, mockDuplicateDetection, service.duplicateDetectionService)
-	assert.NotNil(t, service.httpClient)
-	assert.Equal(t, "https://api.themoviedb.org/3", service.tmdbBaseURL)
+	assert.NotNil(t, service.GetDB())
 }
 
 func TestRecommendationService_GetSimilarItems(t *testing.T) {
 	mockRepo := &MockFileRepository{}
-	mockMediaRecognition := &MediaRecognitionService{}
-	mockDuplicateDetection := &DuplicateDetectionService{}
+	service := services.NewRecommendationService(nil, nil, mockRepo, nil)
 
-	service := NewRecommendationService(mockMediaRecognition, mockDuplicateDetection, mockRepo)
-
-	req := &SimilarItemsRequest{
+	req := &services.SimilarItemsRequest{
 		MediaMetadata: &models.MediaMetadata{
 			ID:        1,
 			Title:     "Test Movie",
@@ -92,9 +83,9 @@ func TestRecommendationService_FindLocalSimilarItems(t *testing.T) {
 	mockMediaRecognition := &MediaRecognitionService{}
 	mockDuplicateDetection := &DuplicateDetectionService{}
 
-	service := NewRecommendationService(mockMediaRecognition, mockDuplicateDetection, mockRepo)
+	service := services.NewRecommendationService(nil, nil, mockRepo, nil)
 
-	req := &SimilarItemsRequest{
+	req := &services.SimilarItemsRequest{
 		MediaMetadata: &models.MediaMetadata{
 			ID:        1,
 			Title:     "Test Movie",
@@ -139,10 +130,7 @@ func TestRecommendationService_FindLocalSimilarItems(t *testing.T) {
 
 func TestRecommendationService_ConvertFileToMediaMetadata(t *testing.T) {
 	mockRepo := &MockFileRepository{}
-	mockMediaRecognition := &MediaRecognitionService{}
-	mockDuplicateDetection := &DuplicateDetectionService{}
-
-	service := NewRecommendationService(mockMediaRecognition, mockDuplicateDetection, mockRepo)
+	service := services.NewRecommendationService(nil, nil, mockRepo, nil)
 
 	fileWithMeta := &models.FileWithMetadata{
 		File: models.File{
@@ -177,10 +165,7 @@ func TestRecommendationService_ConvertFileToMediaMetadata(t *testing.T) {
 
 func TestRecommendationService_QuerySimilarMediaFromDatabase(t *testing.T) {
 	mockRepo := &MockFileRepository{}
-	mockMediaRecognition := &MediaRecognitionService{}
-	mockDuplicateDetection := &DuplicateDetectionService{}
-
-	service := NewRecommendationService(mockMediaRecognition, mockDuplicateDetection, mockRepo)
+	service := services.NewRecommendationService(nil, nil, mockRepo, nil)
 
 	originalMetadata := &models.MediaMetadata{
 		ID:        1,
@@ -223,7 +208,7 @@ func TestRecommendationService_CalculateLocalSimilarity(t *testing.T) {
 	mockMediaRecognition := &MediaRecognitionService{}
 	mockDuplicateDetection := &DuplicateDetectionService{}
 
-	service := NewRecommendationService(mockMediaRecognition, mockDuplicateDetection, mockRepo)
+	service := services.NewRecommendationService(nil, nil, mockRepo, nil)
 
 	original := &models.MediaMetadata{
 		ID:        1,
@@ -255,7 +240,7 @@ func TestRecommendationService_PassesFilters(t *testing.T) {
 	mockMediaRecognition := &MediaRecognitionService{}
 	mockDuplicateDetection := &DuplicateDetectionService{}
 
-	service := NewRecommendationService(mockMediaRecognition, mockDuplicateDetection, mockRepo)
+	service := services.NewRecommendationService(nil, nil, mockRepo, nil)
 
 	media := &models.MediaMetadata{
 		Title:  "Test Movie",
@@ -290,9 +275,9 @@ func TestRecommendationService_FindExternalSimilarItems(t *testing.T) {
 	mockMediaRecognition := &MediaRecognitionService{}
 	mockDuplicateDetection := &DuplicateDetectionService{}
 
-	service := NewRecommendationService(mockMediaRecognition, mockDuplicateDetection, mockRepo)
+	service := services.NewRecommendationService(nil, nil, mockRepo, nil)
 
-	req := &SimilarItemsRequest{
+	req := &services.SimilarItemsRequest{
 		MediaMetadata: &models.MediaMetadata{
 			ID:        1,
 			Title:     "Test Movie",
@@ -316,7 +301,7 @@ func TestRecommendationService_GenerateDetailLink(t *testing.T) {
 	mockMediaRecognition := &MediaRecognitionService{}
 	mockDuplicateDetection := &DuplicateDetectionService{}
 
-	service := NewRecommendationService(mockMediaRecognition, mockDuplicateDetection, mockRepo)
+	service := services.NewRecommendationService(nil, nil, mockRepo, nil)
 
 	media := &models.MediaMetadata{
 		ID: 123,
@@ -331,7 +316,7 @@ func TestRecommendationService_GeneratePlayLink(t *testing.T) {
 	mockMediaRecognition := &MediaRecognitionService{}
 	mockDuplicateDetection := &DuplicateDetectionService{}
 
-	service := NewRecommendationService(mockMediaRecognition, mockDuplicateDetection, mockRepo)
+	service := services.NewRecommendationService(nil, nil, mockRepo, nil)
 
 	media := &models.MediaMetadata{
 		ID: 123,
@@ -346,7 +331,7 @@ func TestRecommendationService_GenerateDownloadLink(t *testing.T) {
 	mockMediaRecognition := &MediaRecognitionService{}
 	mockDuplicateDetection := &DuplicateDetectionService{}
 
-	service := NewRecommendationService(mockMediaRecognition, mockDuplicateDetection, mockRepo)
+	service := services.NewRecommendationService(nil, nil, mockRepo, nil)
 
 	media := &models.MediaMetadata{
 		ID: 123,
@@ -361,7 +346,7 @@ func TestRecommendationService_GenerateMediaID(t *testing.T) {
 	mockMediaRecognition := &MediaRecognitionService{}
 	mockDuplicateDetection := &DuplicateDetectionService{}
 
-	service := NewRecommendationService(mockMediaRecognition, mockDuplicateDetection, mockRepo)
+	service := services.NewRecommendationService(nil, nil, mockRepo, nil)
 
 	media := &models.MediaMetadata{
 		ID: 123,

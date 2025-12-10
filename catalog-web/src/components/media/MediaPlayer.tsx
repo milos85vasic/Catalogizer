@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
@@ -163,6 +163,52 @@ export const MediaPlayer: React.FC<MediaPlayerProps> = ({
     }
   }, [onProgress, onEnded, onError])
 
+  // Auto-select default subtitle on media load
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video || subtitles.length === 0) return
+
+    const textTracks = video.textTracks
+    
+    // Disable all tracks first
+    for (let i = 0; i < textTracks.length; i++) {
+      textTracks[i].mode = 'hidden'
+    }
+
+    // Auto-select a subtitle based on user preference or default language
+    if (!selectedSubtitle && subtitles.length > 0) {
+      // Try to find English subtitle first, or the first available
+      const englishSubtitle = subtitles.find(s => s.language === 'en' || s.language.toLowerCase().includes('en'))
+      const defaultSubtitle = englishSubtitle || subtitles[0]
+      
+      if (defaultSubtitle) {
+        setSelectedSubtitle(defaultSubtitle.id)
+      }
+    }
+  }, [subtitles, media.id]) // Re-run when subtitles or media changes
+
+  // Handle subtitle selection
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+
+    // Get all text tracks (subtitles)
+    const textTracks = video.textTracks
+    
+    // Disable all tracks first
+    for (let i = 0; i < textTracks.length; i++) {
+      textTracks[i].mode = 'hidden'
+    }
+
+    // Enable the selected subtitle track
+    if (selectedSubtitle) {
+      const track = Array.from(textTracks).find(t => t.id === selectedSubtitle)
+      if (track) {
+        track.mode = 'showing'
+      }
+    }
+  }, [selectedSubtitle])
+
   // Auto-hide controls
   useEffect(() => {
     if (isPlaying) {
@@ -216,6 +262,17 @@ export const MediaPlayer: React.FC<MediaPlayerProps> = ({
             onPause={() => setIsPlaying(false)}
           >
             <source src={media.directory_path} type={media.media_type} />
+            {subtitles.map(subtitle => (
+              <track
+                key={subtitle.id}
+                id={subtitle.id}
+                kind="subtitles"
+                label={`${subtitle.language_name} (${subtitle.language})`}
+                srcLang={subtitle.language}
+                src={subtitle.file_path}
+                default={selectedSubtitle === subtitle.id ? true : undefined}
+              />
+            ))}
             Your browser does not support the video tag.
           </video>
 
@@ -305,6 +362,7 @@ export const MediaPlayer: React.FC<MediaPlayerProps> = ({
 
                     {/* Subtitles */}
                     <Button
+                      data-testid="subtitles-button"
                       variant="ghost"
                       size="sm"
                       onClick={() => setShowSubtitles(!showSubtitles)}

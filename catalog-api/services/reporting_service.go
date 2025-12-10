@@ -754,7 +754,7 @@ func (s *ReportingService) analyzeUserDeviceUsage(logs []models.MediaAccessLog) 
 			if log.DeviceInfo.DeviceModel != nil {
 				deviceModel = *log.DeviceInfo.DeviceModel
 			}
-			device := fmt.Sprintf("%s %s", log.DeviceInfo.Platform, deviceModel)
+			device := fmt.Sprintf("%s %s", *log.DeviceInfo.Platform, deviceModel)
 			deviceUsage[device]++
 		}
 	}
