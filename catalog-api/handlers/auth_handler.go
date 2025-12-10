@@ -2,7 +2,6 @@ package handlers
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
 	"strconv"
 	"strings"
@@ -102,7 +101,6 @@ func (h *AuthHandler) RegisterGin(c *gin.Context, userRepo *repository.UserRepos
 	}
 
 	if err := c.ShouldBindJSON(&req); err != nil {
-		fmt.Printf("DEBUG: Register bind error: %v\n", err)
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
