@@ -1,10 +1,8 @@
 package handlers
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
-	"io"
 	"net/http"
 	"strconv"
 	"strings"
@@ -22,8 +20,7 @@ import (
 func (h *AuthHandler) LoginGin(c *gin.Context) {
 	var req models.LoginRequest
 	
-	c.ShouldBindJSON(&req)
-		fmt.Printf("DEBUG: Bind error: %v\n", err)
+	if err := c.ShouldBindJSON(&req); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid request format"})
 		return
 	}

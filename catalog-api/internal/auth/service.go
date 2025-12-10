@@ -5,6 +5,7 @@ import (
 	"database/sql"
 	"encoding/hex"
 	"fmt"
+	"os"
 	"strings"
 	"time"
 
@@ -175,7 +176,13 @@ func (s *AuthService) createDefaultAdmin() error {
 	}
 
 	// Create default admin user
-	passwordHash, err := bcrypt.GenerateFromPassword([]byte("admin123"), bcrypt.DefaultCost)
+	defaultPassword := os.Getenv("ADMIN_PASSWORD")
+	if defaultPassword == "" {
+		defaultPassword = "admin123" // Fallback for development
+		s.logger.Warn("Using default admin password. Set ADMIN_PASSWORD environment variable for security.")
+	}
+	
+	passwordHash, err := bcrypt.GenerateFromPassword([]byte(defaultPassword), bcrypt.DefaultCost)
 	if err != nil {
 		return err
 	}

@@ -837,7 +837,7 @@ func testWebDAVProtocol(t *testing.T, logger *zap.Logger, ctx context.Context) {
 
 // TestProtocolCapabilities tests protocol capability detection
 func TestProtocolCapabilities(t *testing.T) {
-	_ = zap.NewNop() // Logger available but not used in this test
+	logger := zap.NewNop()
 
 	testCases := []struct {
 		protocol             string
@@ -885,20 +885,48 @@ func TestProtocolCapabilities(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf("Protocol_%s", tc.protocol), func(t *testing.T) {
-			// This would test protocol capability detection
-			// Note: This requires implementing a protocol capabilities service
+			// Test protocol capability detection
 			t.Logf("Testing capabilities for protocol: %s", tc.protocol)
 
-			// TODO: Implement actual capability testing
-			// capabilities, err := services.GetProtocolCapabilities(tc.protocol, logger)
-			// if err != nil {
-			//     t.Errorf("Failed to get capabilities for %s: %v", tc.protocol, err)
-			// }
-			//
-			// if capabilities.SupportsRealTimeNotification != tc.expectedRealTime {
-			//     t.Errorf("Expected real-time support %v for %s, got %v",
-			//         tc.expectedRealTime, tc.protocol, capabilities.SupportsRealTimeNotification)
-			// }
+			capabilities, err := services.GetProtocolCapabilities(tc.protocol, logger)
+			if err != nil {
+				t.Errorf("Failed to get capabilities for %s: %v", tc.protocol, err)
+				return
+			}
+
+			// Verify protocol name
+			if capabilities.Protocol != tc.protocol {
+				t.Errorf("Expected protocol %s, got %s", tc.protocol, capabilities.Protocol)
+			}
+
+			// Verify real-time notification support
+			if capabilities.SupportsRealTimeNotification != tc.expectedRealTime {
+				t.Errorf("Expected real-time support %v for %s, got %v",
+					tc.expectedRealTime, tc.protocol, capabilities.SupportsRealTimeNotification)
+			}
+
+			// Verify move window for protocols that support it
+			if tc.expectedRealTime && capabilities.MoveWindow == 0 {
+				t.Errorf("Expected non-zero move window for real-time protocol %s", tc.protocol)
+			}
+
+			// Verify atomic move support (only local and NFS should support)
+			expectedAtomicMove := (tc.protocol == "local" || tc.protocol == "nfs")
+			if capabilities.SupportsAtomicMove != expectedAtomicMove {
+				t.Errorf("Expected atomic move support %v for %s, got %v",
+					expectedAtomicMove, tc.protocol, capabilities.SupportsAtomicMove)
+			}
+
+			// Verify polling requirement
+			if capabilities.RequiresPolling == tc.expectedRealTime {
+				t.Errorf("Protocol %s should not require polling when real-time is %v",
+					tc.protocol, tc.expectedRealTime)
+			}
+
+			t.Logf("Capabilities for %s: RealTime=%v, AtomicMove=%v, MoveWindow=%v, RequiresPolling=%v",
+				tc.protocol, capabilities.SupportsRealTimeNotification,
+				capabilities.SupportsAtomicMove, capabilities.MoveWindow,
+				capabilities.RequiresPolling)
 		})
 	}
 }
