@@ -43,7 +43,7 @@ func (f *DefaultClientFactory) CreateClient(config *StorageConfig) (FileSystemCl
 			MountPoint: getStringSetting(config.Settings, "mount_point", ""),
 			Options:    getStringSetting(config.Settings, "options", "vers=3"),
 		}
-		client, err := NewNFSClient(*nfsConfig)
+		client, err := NewNFSClient(nfsConfig)
 		if err != nil {
 			return nil, fmt.Errorf("failed to create NFS client: %w", err)
 		}

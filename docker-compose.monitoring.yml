@@ -1,0 +1,182 @@
+version: '3.8'
+
+# Docker Compose with Monitoring and Testing Stack
+# Extends base services with comprehensive monitoring
+
+services:
+  # Add monitoring exports to existing services
+  
+  # PostgreSQL Exporter
+  postgres-exporter:
+    image: prometheuscommunity/postgres-exporter:v0.12.0
+    container_name: catalogizer-postgres-exporter
+    environment:
+      DATA_SOURCE_NAME: "postgresql://catalogizer:${POSTGRES_PASSWORD:-password}@postgres:5432/catalogizer?sslmode=disable"
+    ports:
+      - "9187:9187"
+    depends_on:
+      - postgres
+    networks:
+      - catalogizer-network
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 128M
+
+  # Redis Exporter
+  redis-exporter:
+    image: oliver006/redis_exporter:v1.37.0
+    container_name: catalogizer-redis-exporter
+    environment:
+      REDIS_ADDR: "redis://redis:6379"
+    ports:
+      - "9121:9121"
+    depends_on:
+      - redis
+    networks:
+      - catalogizer-network
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 128M
+
+  # Node Exporter (system metrics)
+  node-exporter:
+    image: prom/node-exporter:v1.6.0
+    container_name: catalogizer-node-exporter
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.rootfs=/rootfs'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'
+    ports:
+      - "9100:9100"
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    networks:
+      - catalogizer-network
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 128M
+
+  # Elasticsearch Exporter
+  elasticsearch-exporter:
+    image: prometheuscommunity/elasticsearch-exporter:v1.6.0
+    container_name: catalogizer-elasticsearch-exporter
+    command:
+      - '--es.uri=http://elasticsearch:9200'
+      - '--es.all=true'
+      - '--es.indices=true'
+      - '--es.cluster_settings=true'
+      - '--es.clusterinfo_interval=30s'
+      - '--es.timeout=10s'
+    ports:
+      - "9114:9114"
+    depends_on:
+      - elasticsearch
+    networks:
+      - catalogizer-network
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 128M
+
+  # RabbitMQ Exporter
+  rabbitmq-exporter:
+    image: kbudde/rabbitmq-exporter:v1.0.0-RC9
+    container_name: catalogizer-rabbitmq-exporter
+    environment:
+      RABBIT_URL: "http://admin:admin123@rabbitmq:15672"
+      PUBLISH_PORT: "9419"
+      RABBIT_USER: "admin"
+      RABBIT_PASSWORD: "admin123"
+    ports:
+      - "9419:9419"
+    depends_on:
+      - rabbitmq
+    networks:
+      - catalogizer-network
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 128M
+
+  # MongoDB Exporter
+  mongodb-exporter:
+    image: percona/mongodb_exporter:0.36.0
+    container_name: catalogizer-mongodb-exporter
+    command:
+      - '--mongodb.uri=mongodb://admin:admin123@mongodb:27017'
+      - '--discovering-mode=true'
+    ports:
+      - "9216:9216"
+    depends_on:
+      - mongodb
+    networks:
+      - catalogizer-network
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 128M
+
+  # Kafka Exporter
+  kafka-exporter:
+    image: danielqsj/kafka-exporter:v1.6.0
+    container_name: catalogizer-kafka-exporter
+    command:
+      - '--kafka.server=kafka:9092'
+      - '--kafka.version=2.0.0'
+      - '--web.listen-address=:9308'
+      - '--log.level=info'
+    ports:
+      - "9308:9308"
+    depends_on:
+      - kafka
+    networks:
+      - catalogizer-network
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 128M
+
+  # cAdvisor (Container Advisor)
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:v0.47.0
+    container_name: catalogizer-cadvisor
+    command:
+      - '--port=8080'
+      - '--storage_duration=2m0s'
+      - '--housekeeping_interval=30s'
+      - '--docker_only=true'
+    ports:
+      - "8080:8080"
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
+    privileged: true
+    devices:
+      - /dev/kmsg
+    networks:
+      - catalogizer-network
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+
+networks:
+  catalogizer-network:
+    external: true

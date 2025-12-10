@@ -30,13 +30,13 @@ type NFSClient struct {
 }
 
 // NewNFSClient creates a new NFS client
-func NewNFSClient(config *NFSConfig) *NFSClient {
+func NewNFSClient(config *NFSConfig) (*NFSClient, error) {
 	return &NFSClient{
 		config:     config,
 		mounted:    false,
 		connected:  false,
 		mountPoint: config.MountPoint,
-	}
+	}, nil
 }
 
 // Connect establishes the NFS connection by mounting the filesystem
