@@ -17,15 +17,17 @@ import (
 
 // MockFileRepository implements FileRepositoryInterface for testing
 type MockFileRepository struct {
-	files []models.FileItem
+	files []models.FileWithMetadata
 }
 
 func (m *MockFileRepository) SearchFiles(ctx context.Context, filter models.SearchFilter, pagination models.PaginationOptions, sort models.SortOptions) (*models.SearchResult, error) {
 	// Mock implementation
 	return &models.SearchResult{
-		Files:       m.files,
-		TotalCount:  len(m.files),
-		HasMore:     false,
+		Files:      m.files,
+		TotalCount: int64(len(m.files)),
+		Page:       1,
+		Limit:      10,
+		TotalPages: 1,
 	}, nil
 }
 
@@ -300,7 +302,7 @@ func TestRecommendationService_ExternalProviders(t *testing.T) {
 	recommendationService := services.NewRecommendationService(
 		mediaRecognitionService,
 		duplicateDetectionService,
-		mockRepo,
+		&MockFileRepository{files: []models.FileWithMetadata{}},
 		nil,
 	)
 
@@ -441,7 +443,7 @@ func TestRecommendationService_Performance(t *testing.T) {
 	recommendationService := services.NewRecommendationService(
 		mediaRecognitionService,
 		duplicateDetectionService,
-		mockRepo,
+		&MockFileRepository{files: []models.FileWithMetadata{}},
 		nil,
 	)
 
@@ -519,7 +521,7 @@ func TestRecommendationService_EdgeCases(t *testing.T) {
 	recommendationService := services.NewRecommendationService(
 		mediaRecognitionService,
 		duplicateDetectionService,
-		mockRepo,
+		&MockFileRepository{files: []models.FileWithMetadata{}},
 		nil,
 	)
 
@@ -662,7 +664,7 @@ func TestRecommendationService_SimilarityAlgorithms(t *testing.T) {
 	recommendationService := services.NewRecommendationService(
 		mediaRecognitionService,
 		duplicateDetectionService,
-		mockRepo,
+		&MockFileRepository{files: []models.FileWithMetadata{}},
 		nil,
 	)
 

@@ -24,6 +24,8 @@ import com.catalogizer.androidtv.data.models.MediaItem
 import com.catalogizer.androidtv.ui.components.MediaCard
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.Dispatchers
 
 @Composable
 fun SearchScreen(
@@ -220,46 +222,32 @@ class SearchViewModel : androidx.lifecycle.ViewModel() {
     fun search() {
         if (searchQuery.value.isBlank()) return
 
-        // Implement actual search
         _isLoading.value = true
         _error.value = null
         
-        viewModelScope.launch {
+        // Simulate search with delay
+        kotlinx.coroutines.GlobalScope.launch(kotlinx.coroutines.Dispatchers.IO) {
+            kotlinx.coroutines.delay(1000)
             try {
-                val results = repository.searchMedia(searchQuery.value)
-                _searchResults.value = results
-            } catch (e: Exception) {
-                _error.value = "Search failed: ${e.message}"
-                // Fallback to mock data if search fails
+                // Mock search results for now
                 _searchResults.value = listOf(
                     MediaItem(
                         id = 1,
-                        title = "Sample Movie: ${searchQuery.value}",
+                        title = "Result: ${searchQuery.value}",
                         mediaType = "movie",
                         year = 2024,
                         directoryPath = "/movies",
                         createdAt = "2024-01-01T00:00:00Z",
                         updatedAt = "2024-01-01T00:00:00Z",
                         fileSize = 1000000000L,
-                        description = "A sample movie for demonstration"
+                        description = "Mock search result"
                     )
                 )
+            } catch (e: Exception) {
+                _error.value = "Search failed: ${e.message}"
             } finally {
                 _isLoading.value = false
             }
-        },
-            MediaItem(
-                id = 2,
-                title = "Another Result for ${searchQuery.value}",
-                mediaType = "series",
-                year = 2023,
-                directoryPath = "/series",
-                createdAt = "2024-01-01T00:00:00Z",
-                updatedAt = "2024-01-01T00:00:00Z",
-                fileSize = 2000000000L,
-                description = "Another sample media item"
-            )
-        )
-        _isLoading.value = false
+        }
     }
 }

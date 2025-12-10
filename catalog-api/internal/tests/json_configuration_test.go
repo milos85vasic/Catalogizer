@@ -172,7 +172,6 @@ func TestJSONConfigurationHandlers(t *testing.T) {
 				CurrencyCode:      "EUR",
 				DateFormat:        "DD/MM/YYYY",
 				TimeFormat:        "24h",
-				Timezone:          "Europe/Paris",
 			},
 			Description: "French configuration",
 			Tags:        []string{"french", "europe"},

@@ -19,9 +19,11 @@ type MockFileRepositorySimple struct {
 func (m *MockFileRepositorySimple) SearchFiles(ctx context.Context, filter models.SearchFilter, pagination models.PaginationOptions, sort models.SortOptions) (*models.SearchResult, error) {
 	// Mock implementation
 	return &models.SearchResult{
-		Files:       []models.FileItem{},
-		TotalCount:  0,
-		HasMore:     false,
+		Files:      []models.FileWithMetadata{},
+		TotalCount: 0,
+		Page:       1,
+		Limit:      10,
+		TotalPages: 0,
 	}, nil
 }
 

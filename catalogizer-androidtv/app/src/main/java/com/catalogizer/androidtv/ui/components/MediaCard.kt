@@ -24,6 +24,20 @@ import androidx.compose.ui.unit.sp
 import androidx.tv.material3.*
 import coil.compose.AsyncImage
 import com.catalogizer.androidtv.data.models.MediaItem
+import androidx.compose.ui.graphics.vector.ImageVector
+
+/**
+ * Returns appropriate icon based on media type
+ */
+private fun getMediaTypeIcon(mediaType: String): ImageVector {
+    return when (mediaType.lowercase()) {
+        "video" -> Icons.Default.Movie
+        "movie" -> Icons.Default.Movie
+        "audio", "music" -> Icons.Default.MusicNote
+        "image", "photo" -> Icons.Default.Image
+        else -> Icons.Default.InsertDriveFile
+    }
+}
 
 @Composable
 fun MediaCard(
@@ -65,21 +79,7 @@ fun MediaCard(
                         model = mediaItem.thumbnailUrl,
                         contentDescription = mediaItem.title,
                         modifier = Modifier.fillMaxSize(),
-                        contentScale = ContentScale.Crop,
-                        error = {
-                            // Fallback icon if image fails to load
-                            Icon(
-                                imageVector = when(mediaItem.mediaType) {
-                                    "movie", "video" -> Icons.Default.Movie
-                                    "music", "audio" -> Icons.Default.MusicNote
-                                    "image" -> Icons.Default.Image
-                                    else -> Icons.Default.InsertDriveFile
-                                },
-                                contentDescription = mediaItem.title,
-                                modifier = Modifier.size(48.dp),
-                                tint = MaterialTheme.colorScheme.onSurfaceVariant
-                            )
-                        }
+                        contentScale = ContentScale.Crop
                     )
                 } else {
                     // Default icon when no thumbnail
@@ -275,19 +275,29 @@ fun CompactMediaCard(
                 modifier = Modifier.size(80.dp, 60.dp),
                 contentAlignment = Alignment.Center
             ) {
-                // TODO: Load actual thumbnail
-                Box(
-                    modifier = Modifier.background(
-                        color = Color.Black.copy(alpha = 0.6f),
-                        shape = RoundedCornerShape(50)
+                if (mediaItem.coverImage?.isNotEmpty() == true) {
+                    AsyncImage(
+                        model = mediaItem.coverImage,
+                        contentDescription = "Thumbnail for ${mediaItem.title}",
+                        modifier = Modifier.fillMaxSize(),
+                        contentScale = ContentScale.Crop
                     )
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.PlayArrow,
-                        contentDescription = "Play",
-                        modifier = Modifier.size(24.dp),
-                        tint = Color.White
-                    )
+                } else {
+                    // Fallback for media without thumbnails
+                    Box(
+                        modifier = Modifier.background(
+                            color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f),
+                            shape = RoundedCornerShape(4.dp)
+                        ),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Icon(
+                            imageVector = getMediaTypeIcon(mediaItem.mediaType),
+                            contentDescription = "Media Type",
+                            modifier = Modifier.size(32.dp),
+                            tint = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
                 }
             }
         }

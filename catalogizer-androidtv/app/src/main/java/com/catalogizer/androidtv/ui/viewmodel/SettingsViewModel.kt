@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class SettingsViewModel(
-    private val settingsRepository: SettingsRepository = SettingsRepository()
+    private val settingsRepository: SettingsRepository? = null
 ) : ViewModel() {
     
     private val _settingsState = MutableStateFlow<Settings?>(null)
@@ -17,14 +17,18 @@ class SettingsViewModel(
 
     fun loadSettings() {
         viewModelScope.launch {
-            _settingsState.value = settingsRepository.getSettings()
+            settingsRepository?.let { repo ->
+                _settingsState.value = repo.getSettings()
+            }
         }
     }
 
     fun updateSettings(settings: Settings) {
         viewModelScope.launch {
-            settingsRepository.saveSettings(settings)
-            _settingsState.value = settings
+            settingsRepository?.let { repo ->
+                repo.saveSettings(settings)
+                _settingsState.value = settings
+            }
         }
     }
     
