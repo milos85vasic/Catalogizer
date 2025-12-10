@@ -12,6 +12,19 @@ import (
 	"catalogizer/internal/services"
 )
 
+// MockFileRepository implements FileRepositoryInterface for testing
+type MockFileRepositorySimple struct {
+}
+
+func (m *MockFileRepositorySimple) SearchFiles(ctx context.Context, filter models.SearchFilter, pagination models.PaginationOptions, sort models.SortOptions) (*models.SearchResult, error) {
+	// Mock implementation
+	return &models.SearchResult{
+		Files:       []models.FileItem{},
+		TotalCount:  0,
+		HasMore:     false,
+	}, nil
+}
+
 func TestRecommendationService_BasicOperation(t *testing.T) {
 	ctx := context.Background()
 
@@ -24,9 +37,12 @@ func TestRecommendationService_BasicOperation(t *testing.T) {
 	translationService := services.NewTranslationService(logger)
 	mediaRecognitionService := services.NewMediaRecognitionService(db, logger, cacheService, translationService, "", "", "", "", "", "")
 	duplicateDetectionService := services.NewDuplicateDetectionService(db, logger, nil)
+	fileRepo := &MockFileRepositorySimple{}
 	recommendationService := services.NewRecommendationService(
 		mediaRecognitionService,
 		duplicateDetectionService,
+		fileRepo,
+		db,
 	)
 
 	// Create test media item

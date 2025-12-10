@@ -23,7 +23,7 @@ func TestJSONConfigurationHandlers(t *testing.T) {
 	defer db.Close()
 
 	logger := zaptest.NewLogger(t)
-	translationService := services.NewTranslationService(db, logger, "")
+	translationService := services.NewTranslationService(logger)
 	cacheService := services.NewCacheService(db, logger)
 	localizationService := services.NewLocalizationService(db, logger, translationService, cacheService)
 
@@ -43,11 +43,10 @@ func TestJSONConfigurationHandlers(t *testing.T) {
 		SubtitleLanguages:     []string{"en", "es"},
 		AutoTranslate:         true,
 		AutoDownloadSubtitles: true,
-		PreferredRegion:       "US",
+			PreferredRegion:       "US",
 		CurrencyCode:          "USD",
 		DateFormat:            "MM/DD/YYYY",
 		TimeFormat:            "12h",
-		Timezone:              "America/New_York",
 	}
 	_, err := localizationService.SetupUserLocalization(context.Background(), localizationReq)
 	require.NoError(t, err)
@@ -354,7 +353,7 @@ func TestJSONConfigurationPerformance(t *testing.T) {
 	defer db.Close()
 
 	logger := zaptest.NewLogger(t)
-	translationService := services.NewTranslationService(db, logger, "")
+	translationService := services.NewTranslationService(logger)
 	cacheService := services.NewCacheService(db, logger)
 	localizationService := services.NewLocalizationService(db, logger, translationService, cacheService)
 
@@ -368,11 +367,10 @@ func TestJSONConfigurationPerformance(t *testing.T) {
 		SubtitleLanguages:     []string{"en", "es", "fr", "de", "it", "pt", "ru", "ja", "ko", "zh"},
 		AutoTranslate:         true,
 		AutoDownloadSubtitles: true,
-		PreferredRegion:       "US",
+			PreferredRegion:       "US",
 		CurrencyCode:          "USD",
 		DateFormat:            "MM/DD/YYYY",
 		TimeFormat:            "12h",
-		Timezone:              "America/New_York",
 	}
 	_, err := localizationService.SetupUserLocalization(context.Background(), localizationReq)
 	require.NoError(t, err)

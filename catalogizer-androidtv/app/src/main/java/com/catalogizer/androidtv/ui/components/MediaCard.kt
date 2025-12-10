@@ -7,16 +7,22 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material.icons.filled.Movie
+import androidx.compose.material.icons.filled.MusicNote
+import androidx.compose.material.icons.filled.Image
+import androidx.compose.material.icons.filled.InsertDriveFile
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.tv.material3.*
+import coil.compose.AsyncImage
 import com.catalogizer.androidtv.data.models.MediaItem
 
 @Composable
@@ -54,13 +60,40 @@ fun MediaCard(
                 contentAlignment = Alignment.Center
             ) {
                 if (mediaItem.thumbnailUrl != null) {
-                    // TODO: Load actual thumbnail using Coil
-                    // AsyncImage(
-                    //     model = mediaItem.thumbnailUrl,
-                    //     contentDescription = mediaItem.title,
-                    //     modifier = Modifier.fillMaxSize(),
-                    //     contentScale = ContentScale.Crop
-                    // )
+                    // Load actual thumbnail using Coil
+                    AsyncImage(
+                        model = mediaItem.thumbnailUrl,
+                        contentDescription = mediaItem.title,
+                        modifier = Modifier.fillMaxSize(),
+                        contentScale = ContentScale.Crop,
+                        error = {
+                            // Fallback icon if image fails to load
+                            Icon(
+                                imageVector = when(mediaItem.mediaType) {
+                                    "movie", "video" -> Icons.Default.Movie
+                                    "music", "audio" -> Icons.Default.MusicNote
+                                    "image" -> Icons.Default.Image
+                                    else -> Icons.Default.InsertDriveFile
+                                },
+                                contentDescription = mediaItem.title,
+                                modifier = Modifier.size(48.dp),
+                                tint = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
+                    )
+                } else {
+                    // Default icon when no thumbnail
+                    Icon(
+                        imageVector = when(mediaItem.mediaType) {
+                            "movie", "video" -> Icons.Default.Movie
+                            "music", "audio" -> Icons.Default.MusicNote
+                            "image" -> Icons.Default.Image
+                            else -> Icons.Default.InsertDriveFile
+                        },
+                        contentDescription = mediaItem.title,
+                        modifier = Modifier.size(48.dp),
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
                 }
                 
                 // Play button overlay

@@ -59,6 +59,11 @@ export const PlaylistsPage: React.FC = () => {
   const [selectedPlaylist, setSelectedPlaylist] = useState<Playlist | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [filterMediaType, setFilterMediaType] = useState('all');
+  
+  // Media search state
+  const [mediaSearchQuery, setMediaSearchQuery] = useState('');
+  const [mediaSearchResults, setMediaSearchResults] = useState<any[]>([]);
+  const [isSearchingMedia, setIsSearchingMedia] = useState(false);
 
   // Form state for creating/editing playlists
   const [formData, setFormData] = useState<CreatePlaylistFormData>({
@@ -194,6 +199,67 @@ export const PlaylistsPage: React.FC = () => {
       is_public: false,
       selectedItems: []
     });
+  };
+
+  // Media search functionality
+  const handleMediaSearch = async (query: string) => {
+    if (!query.trim()) {
+      setMediaSearchResults([]);
+      return;
+    }
+
+    setIsSearchingMedia(true);
+    try {
+      // Mock search results - replace with actual API call
+      const mockResults = [
+        { id: '1', title: 'Summer Vibes', type: 'music', artist: 'DJ Sunshine', duration: '3:24' },
+        { id: '2', title: 'Action Movie', type: 'video', director: 'John Smith', duration: '2:15:00' },
+        { id: '3', title: 'Beautiful Sunset', type: 'image', size: '2.4MB' },
+        { id: '4', title: 'Project Report', type: 'document', pages: 45 }
+      ].filter(item => 
+        item.title.toLowerCase().includes(query.toLowerCase()) ||
+        (item.artist && item.artist.toLowerCase().includes(query.toLowerCase())) ||
+        (item.director && item.director.toLowerCase().includes(query.toLowerCase()))
+      );
+      
+      setMediaSearchResults(mockResults);
+    } catch (error) {
+      console.error('Failed to search media:', error);
+      toast.error('Failed to search media');
+    } finally {
+      setIsSearchingMedia(false);
+    }
+  };
+
+  const handleAddMediaItem = (item: any) => {
+    const playlistItem: PlaylistItem = {
+      id: item.id,
+      title: item.title,
+      media_type: item.type,
+      duration: item.duration,
+      metadata: {
+        artist: item.artist,
+        director: item.director,
+        size: item.size,
+        pages: item.pages
+      }
+    };
+    
+    setFormData(prev => ({
+      ...prev,
+      selectedItems: [...prev.selectedItems, playlistItem]
+    }));
+    
+    toast.success(`Added "${item.title}" to playlist`);
+    setMediaSearchQuery('');
+    setMediaSearchResults([]);
+  };
+
+  const handleRemoveMediaItem = (itemId: string) => {
+    setFormData(prev => ({
+      ...prev,
+      selectedItems: prev.selectedItems.filter(item => item.id !== itemId)
+    }));
   };
 
   const handleFormChange = (field: keyof CreatePlaylistFormData, value: any) => {
@@ -334,11 +400,15 @@ export const PlaylistsPage: React.FC = () => {
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Add Items to Playlist
               </label>
-              <div className="flex gap-2">
+              <div className="flex gap-2 mb-3">
                 <Input
                   placeholder="Search media items..."
                   className="flex-1"
-                  // TODO: Implement media item search
+                  value={mediaSearchQuery}
+                  onChange={(e) => {
+                    setMediaSearchQuery(e.target.value);
+                    handleMediaSearch(e.target.value);
+                  }}
                 />
                 <Button variant="outline">
                   <Search className="w-4 h-4" />

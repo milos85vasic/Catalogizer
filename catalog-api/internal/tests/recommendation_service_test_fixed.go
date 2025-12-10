@@ -15,6 +15,20 @@ import (
 	"catalogizer/internal/services"
 )
 
+// MockFileRepository implements FileRepositoryInterface for testing
+type MockFileRepository struct {
+	files []models.FileItem
+}
+
+func (m *MockFileRepository) SearchFiles(ctx context.Context, filter models.SearchFilter, pagination models.PaginationOptions, sort models.SortOptions) (*models.SearchResult, error) {
+	// Mock implementation
+	return &models.SearchResult{
+		Files:       m.files,
+		TotalCount:  len(m.files),
+		HasMore:     false,
+	}, nil
+}
+
 func TestRecommendationService_GetSimilarItems(t *testing.T) {
 	ctx := context.Background()
 
@@ -29,9 +43,12 @@ func TestRecommendationService_GetSimilarItems(t *testing.T) {
 		"http://mock-ocr-api", "http://mock-fingerprint-api",
 	)
 	duplicateDetectionService := services.NewDuplicateDetectionService(db, logger, nil)
+	fileRepo := &MockFileRepository{}
 	recommendationService := services.NewRecommendationService(
 		mediaRecognitionService,
 		duplicateDetectionService,
+		fileRepo,
+		db,
 	)
 
 	t.Run("movie recommendations", func(t *testing.T) {
@@ -804,9 +821,12 @@ func BenchmarkRecommendationService(b *testing.B) {
 		"http://mock-ocr-api", "http://mock-fingerprint-api",
 	)
 	duplicateDetectionService := services.NewDuplicateDetectionService(db, logger, nil)
+	fileRepo := &MockFileRepository{}
 	recommendationService := services.NewRecommendationService(
 		mediaRecognitionService,
 		duplicateDetectionService,
+		fileRepo,
+		db,
 	)
 
 	year2023 := 2023

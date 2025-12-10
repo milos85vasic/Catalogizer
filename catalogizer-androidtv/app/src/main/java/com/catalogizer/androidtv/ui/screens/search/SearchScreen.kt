@@ -220,35 +220,34 @@ class SearchViewModel : androidx.lifecycle.ViewModel() {
     fun search() {
         if (searchQuery.value.isBlank()) return
 
-        // Simulate search - in real implementation, this would call the repository
+        // Implement actual search
         _isLoading.value = true
         _error.value = null
         
-        // TODO: Replace with actual search call to repository
-        // viewModelScope.launch {
-        //     try {
-        //         val results = repository.searchMedia(searchQuery.value)
-        //         _searchResults.value = results
-        //     } catch (e: Exception) {
-        //         _error.value = "Search failed: ${e.message}"
-        //     } finally {
-        //         _isLoading.value = false
-        //     }
-        // }
-        
-        // Mock search results for demonstration
-        _searchResults.value = listOf(
-            MediaItem(
-                id = 1,
-                title = "Sample Movie: ${searchQuery.value}",
-                mediaType = "movie",
-                year = 2024,
-                directoryPath = "/movies",
-                createdAt = "2024-01-01T00:00:00Z",
-                updatedAt = "2024-01-01T00:00:00Z",
-                fileSize = 1000000000L,
-                description = "A sample movie for demonstration"
-            ),
+        viewModelScope.launch {
+            try {
+                val results = repository.searchMedia(searchQuery.value)
+                _searchResults.value = results
+            } catch (e: Exception) {
+                _error.value = "Search failed: ${e.message}"
+                // Fallback to mock data if search fails
+                _searchResults.value = listOf(
+                    MediaItem(
+                        id = 1,
+                        title = "Sample Movie: ${searchQuery.value}",
+                        mediaType = "movie",
+                        year = 2024,
+                        directoryPath = "/movies",
+                        createdAt = "2024-01-01T00:00:00Z",
+                        updatedAt = "2024-01-01T00:00:00Z",
+                        fileSize = 1000000000L,
+                        description = "A sample movie for demonstration"
+                    )
+                )
+            } finally {
+                _isLoading.value = false
+            }
+        },
             MediaItem(
                 id = 2,
                 title = "Another Result for ${searchQuery.value}",

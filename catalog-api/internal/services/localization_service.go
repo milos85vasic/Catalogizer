@@ -107,6 +107,11 @@ type WizardLocalizationStep struct {
 	CurrencyCode          string   `json:"currency_code"`
 }
 
+type ConfigurationValidation struct {
+	Valid  bool     `json:"valid"`
+	Errors []string `json:"errors,omitempty"`
+}
+
 type ConfigurationExport struct {
 	Version          string                  `json:"version"`
 	ExportedAt       time.Time               `json:"exported_at"`
