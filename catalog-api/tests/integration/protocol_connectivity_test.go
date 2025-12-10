@@ -1,16 +1,21 @@
 package integration
 
 import (
+	"catalogizer/filesystem"
 	"catalogizer/internal/services"
 	"catalogizer/tests/mocks"
 	"context"
 	"fmt"
 	"io"
 	"net/http"
+	"os"
+	"path/filepath"
 	"strings"
 	"testing"
 	"time"
 
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 	"go.uber.org/zap"
 )
 
@@ -335,18 +340,73 @@ func testFTPProtocol(t *testing.T, logger *zap.Logger, ctx context.Context) {
 // testLocalProtocol tests local filesystem protocol functionality
 func testLocalProtocol(t *testing.T, logger *zap.Logger, ctx context.Context) {
 	t.Run("Local File System Access", func(t *testing.T) {
-		// This would test local filesystem operations
-		// For now, just verify we can access the current directory
+		// Create a temporary directory for testing
+		tempDir, err := os.MkdirTemp("", "catalogizer_local_test")
+		require.NoError(t, err)
+		defer os.RemoveAll(tempDir)
 
-		// Note: In a real implementation, you would test:
-		// - Directory listing
-		// - File reading/writing
-		// - Permission handling
-		// - Path validation
-		// - Symlink handling
+		// Create local filesystem client
+		config := &filesystem.LocalConfig{
+			BasePath: tempDir,
+		}
+		client := filesystem.NewLocalClient(config)
 
-		t.Log("Local filesystem protocol testing placeholder")
-		// TODO: Implement actual local filesystem tests
+		// Test connection
+		err = client.Connect(ctx)
+		require.NoError(t, err)
+		assert.True(t, client.IsConnected())
+
+		// Test directory listing
+		files, err := client.ListDirectory(ctx, ".")
+		require.NoError(t, err)
+		assert.Empty(t, files) // Should be empty initially
+
+		// Create test file
+		testFilePath := filepath.Join(tempDir, "test.txt")
+		testContent := "Hello, Local Filesystem!"
+		err = os.WriteFile(testFilePath, []byte(testContent), 0644)
+		require.NoError(t, err)
+
+		// Test file info
+		info, err := client.GetFileInfo(ctx, "test.txt")
+		require.NoError(t, err)
+		assert.Equal(t, "test.txt", info.Name)
+		assert.False(t, info.IsDir)
+		assert.Equal(t, int64(len(testContent)), info.Size)
+
+		// Test file reading
+		reader, err := client.ReadFile(ctx, "test.txt")
+		require.NoError(t, err)
+		defer reader.Close()
+
+		content, err := io.ReadAll(reader)
+		require.NoError(t, err)
+		assert.Equal(t, testContent, string(content))
+
+		// Test directory listing with file
+		files, err = client.ListDirectory(ctx, ".")
+		require.NoError(t, err)
+		assert.Len(t, files, 1)
+		assert.Equal(t, "test.txt", files[0].Name)
+
+		// Test subdirectory creation and listing
+		subDir := "subdir"
+		err = os.Mkdir(filepath.Join(tempDir, subDir), 0755)
+		require.NoError(t, err)
+
+		files, err = client.ListDirectory(ctx, ".")
+		require.NoError(t, err)
+		assert.Len(t, files, 2) // test.txt + subdir
+
+		// Test subdirectory listing
+		files, err = client.ListDirectory(ctx, subDir)
+		require.NoError(t, err)
+		assert.Empty(t, files) // Should be empty
+
+		// Test disconnection
+		err = client.Disconnect(ctx)
+		require.NoError(t, err)
+		assert.False(t, client.IsConnected())
 	})
 }
 

@@ -22,14 +22,7 @@ import (
 func (h *AuthHandler) LoginGin(c *gin.Context) {
 	var req models.LoginRequest
 	
-	// Debug: Print raw request body
-	bodyBytes, _ := c.GetRawData()
-	fmt.Printf("DEBUG: Raw request body: %s\n", string(bodyBytes))
-	
-	// Reset the request body for further processing
-	c.Request.Body = io.NopCloser(bytes.NewBuffer(bodyBytes))
-	
-	if err := c.ShouldBindJSON(&req); err != nil {
+	c.ShouldBindJSON(&req)
 		fmt.Printf("DEBUG: Bind error: %v\n", err)
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid request format"})
 		return
