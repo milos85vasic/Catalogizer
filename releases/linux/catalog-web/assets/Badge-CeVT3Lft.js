@@ -1,0 +1,2 @@
+import{j as n}from"./index-BzqIBI_1.js";const d=({children:e,variant:t="default",className:r=""})=>{const s="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium",a={default:"bg-blue-100 text-blue-800",secondary:"bg-gray-100 text-gray-800",destructive:"bg-red-100 text-red-800",outline:"border border-gray-300 text-gray-800 bg-transparent"};return n.jsx("span",{className:`${s} ${a[t]} ${r}`,children:e})};export{d as B};
+//# sourceMappingURL=Badge-CeVT3Lft.js.map
